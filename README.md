@@ -15,11 +15,11 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 We curate large-scale datasets comprised of **1B time points**, proposing a unified training strategy with **single-series sequence**, and presenting Timer with the **decoder-only architecture**. As a LTSM, Timer is enabled with:
 
-* Generalization ability that one model fits all domains.
+* **Generalization ability** that one model fits all domains.
 
-* Task generality that one model copes with various tasks.
+* **Task generality** that one model copes with various tasks.
 
-* Scalability that the performance increases with the scale of pre-training.
+* **Scalability** that the performance increases with the scale of pre-training.
 
 ## Usage
 
