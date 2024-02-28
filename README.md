@@ -128,7 +128,7 @@ The decoder-only architecture provides additional flexibility to accommodate ser
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
-## Future work
+## Future Work
 
 We are preparing to release the composition of datasets (UTSD), larger checkpoints, and code for pre-training. Please stay tuned for the update!
 
