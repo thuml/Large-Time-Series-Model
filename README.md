@@ -33,11 +33,11 @@ pip install -r requirements.txt
    from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=sharing)
    or [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/93388a1811584564a40a/).
 
-2. Download the pre-trained checkpoints and put them under the folder ```./checkpoints/```.
+2. Download the pre-trained checkpoints and put them in the folder ```./checkpoints/```.
    *
    Timer_67M_UTSD_4G [[Google]](https://drive.google.com/file/d/1iTaKjDj7IX-GZZjEv7pKGcgyV7GObj-U/view?usp=sharing) [[Tsinghua]](https://cloud.tsinghua.edu.cn/f/e12e5c08131e481f8df6/)
 
-3. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
+3. Train and evaluate the model. We provide the above tasks in the folder ```./scripts/```.
 
 ```
 # forecasting
