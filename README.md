@@ -161,4 +161,3 @@ We appreciate the following GitHub repos a lot for their valuable code and effor
 If you have any questions or want to use the code, feel free to contact:
 * Yong Liu (liuyong21@mails.tsinghua.edu.cn)
 * Haoran Zhang (z-hr20@mails.tsinghua.edu.cn)
-* Chenyu Li (lichenyu20@mails.tsinghua.edu.cn)
