@@ -124,7 +124,7 @@ By increasing the parameters and pre-training scale, Timer achieves notable perf
 
 ## Flexible Sequence Length
 
-The decoder-only architecture provides additional flexibility to accommodate series of different lookback and forecast lengths.
+The decoder-only architecture provides additional flexibility to accommodate time series of different lookback and forecast lengths.
 
 <p align="center">
 <img src="./figures/length.png" alt="300" align=center />
@@ -133,7 +133,7 @@ The decoder-only architecture provides additional flexibility to accommodate ser
 ## Future Work
 
 We are preparing to release the composition of datasets (UTSD), larger checkpoints, and code for pre-training. Please stay tuned for the update!
-
+  
 ## Citation
 
 If you find this repo helpful, please cite our paper. 
@@ -146,6 +146,12 @@ If you find this repo helpful, please cite our paper.
   year={2024}
 }
 ```
+
+## Acknowledgement
+
+We appreciate the following GitHub repos a lot for their valuable code and efforts.
+- Time-Series-Library (https://github.com/thuml/Time-Series-Library)
+- iTransformer (https://github.com/thuml/iTransformer)
 
 ## Contact
 
