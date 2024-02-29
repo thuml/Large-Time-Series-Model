@@ -5,9 +5,9 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.3) Checkpoint pre-trained on UTSD-4G is available.
+:triangular_flag_on_post: **News** (2024.2) Checkpoint pre-trained on UTSD-4G is available.
 
-:triangular_flag_on_post: **News** (2024.3) We provide the downstream fine-tune code for the forecasting task.
+:triangular_flag_on_post: **News** (2024.2) We provide the downstream fine-tune code for the forecasting task.
 
 ## Introduction
 
