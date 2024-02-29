@@ -1,4 +1,4 @@
-# Timer
+# Timer⏱️
 
 This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368).
 
