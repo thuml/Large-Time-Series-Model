@@ -15,11 +15,11 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 We curate large-scale datasets comprised of **1B time points**, proposing a unified training strategy with **single-series sequence**, and presenting Timer with the **decoder-only architecture**. As a LTSM, Timer is enabled with:
 
-* Generalization ability that one model fits all domains.
+* **Generalization ability** that one model fits all domains.
 
-* Task generality that one model copes with various tasks.
+* **Task generality** that one model copes with various tasks.
 
-* Scalability that the performance increases with the scale of pre-training.
+* **Scalability** that the performance increases with the scale of pre-training.
 
 ## Usage
 
@@ -29,10 +29,12 @@ We curate large-scale datasets comprised of **1B time points**, proposing a unif
 pip install -r requirements.txt
 ```
 
-1. The datasets can be obtained from [Google Drive](#) or [Tsinghua Cloud](#).
+1. The datasets can be obtained
+   from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=sharing)
+   or [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/93388a1811584564a40a/).
 
-2. Download the pre-trained checkpoints:
-   * Timer_67M_UTSD_4G [[Google]](#) [[Tsinghua]](#)
+2. Download the pre-trained checkpoints and put them under the folder ```./checkpoints/```.
+   * Timer_67M_UTSD_4G [[Google]](https://drive.google.com/file/d/1iTaKjDj7IX-GZZjEv7pKGcgyV7GObj-U/view?usp=sharing) [[Tsinghua]](https://cloud.tsinghua.edu.cn/f/e12e5c08131e481f8df6/)
 
 3. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
 
@@ -122,16 +124,16 @@ By increasing the parameters and pre-training scale, Timer achieves notable perf
 
 ## Flexible Sequence Length
 
-The decoder-only architecture provides additional flexibility to accommodate series of different lookback and forecast lengths.
+The decoder-only architecture provides additional flexibility to accommodate time series of different lookback and forecast lengths.
 
 <p align="center">
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
-## Future work
+## Future Work
 
 We are preparing to release the composition of datasets (UTSD), larger checkpoints, and code for pre-training. Please stay tuned for the update!
-
+  
 ## Citation
 
 If you find this repo helpful, please cite our paper. 
@@ -144,6 +146,12 @@ If you find this repo helpful, please cite our paper.
   year={2024}
 }
 ```
+
+## Acknowledgement
+
+We appreciate the following GitHub repos a lot for their valuable code and efforts.
+- Time-Series-Library (https://github.com/thuml/Time-Series-Library)
+- iTransformer (https://github.com/thuml/iTransformer)
 
 ## Contact
 

@@ -6,7 +6,7 @@ label_len=576
 pred_len=96 # the length of a single autoregressive roll
 output_len=96 # the length of forecasting
 segment_len=96
-ckpt_path=checkpoints/Timer_67M_4G.pt
+ckpt_path=checkpoints/Timer_67M_UTSD_4G.pt
 subset_rand_ratio=0.1
 
 python run.py \
