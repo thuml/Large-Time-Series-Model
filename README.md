@@ -146,7 +146,7 @@ If you find this repo helpful, please cite our paper.
   title={Timer: Transformers for Time Series Analysis at Scale},
   author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
   journal={arXiv preprint arXiv:2402.02368},
-  year={2024}
+  year={2024} 
 }
 ```
 
