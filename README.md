@@ -145,8 +145,9 @@ bash ./scripts/anomaly_detection/UCR.sh
 
 ## Future Work
 
-We are preparing to release the composition of datasets (UTSD), larger checkpoints, and code for pre-training. Please stay tuned for the update!
+We are preparing to provide the online service for zero-shot forecasting ([demo](https://thuml.github.io/timer/img/demo.mp4)). Please stay tuned for the update!
   
+
 ## Citation
 
 If you find this repo helpful, please cite our paper. 
