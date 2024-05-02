@@ -1,17 +1,22 @@
-# Timer⏱️
+# Timer (Large Time Series Model)
 
-This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368).
+This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368), a Large Time Series Model for unified time series and tasks.
 
+<p align="center">
+<img src="./figures/unified.png" alt="" align=center />
+</p>
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.4) API interface for zero-shot forecasting is coming soon!
+:triangular_flag_on_post: **News** (2024.5) Our [project page](https://thuml.github.io/timer/) is available!
 
-:triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended to **15B** time points.
+:triangular_flag_on_post: **News** (2024.4) Online API interface is coming soon, supporting **zero-shot forecasting**!
 
-:triangular_flag_on_post: **News** (2024.2) Checkpoint pre-trained on UTSD-4G is available.
+:triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended to **15B** time points, exhibiting the zero-shot capability.
 
-:triangular_flag_on_post: **News** (2024.2) We provide the downstream fine-tune code for the forecasting task.
+:triangular_flag_on_post: **News** (2024.2) Checkpoint model on UTSD-4G is available.
+
+:triangular_flag_on_post: **News** (2024.2) Releasing the fine-tune code for forecasting.
 
 ## Introduction
 
@@ -25,32 +30,9 @@ We curate large-scale datasets comprised of **1B time points**, proposing a unif
 
 * **Scalability** that the performance increases with the scale of pre-training.
 
-## Usage
-
-1. Install Pytorch and necessary dependencies.
-
-```
-pip install -r requirements.txt
-```
-
-1. Put the datasets [[Google Drive]](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=sharing)
-[[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93388a1811584564a40a/) under the folder ```./dataset/```.
-
-2. Download the pre-trained checkpoints and put them under the folder ```./checkpoints/```.
-   * Timer_67M_UTSD_4G [[Google]](https://drive.google.com/file/d/1iTaKjDj7IX-GZZjEv7pKGcgyV7GObj-U/view?usp=sharing) [[Tsinghua]](https://cloud.tsinghua.edu.cn/f/e12e5c08131e481f8df6/)
-
-3. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
-
-```
-# forecasting
-bash ./scripts/forecast/ECL.sh
-
-# TODO: segement-level imputation
-bash ./scripts/imputation/ECL.sh
-
-# TODO: anomaly detection on the fly
-bash ./scripts/anomaly_detection/UCR.sh
-```
+<p align="center">
+<img src="./figures/abilities.png" alt="" align=center />
+</p>
 
 ## Showcases
 
@@ -102,11 +84,9 @@ With the substantial progress of decode-only large language models and evaluatio
 
 Timer is applicable on various tasks, which is realized in the unified generative approach.
 
-| Task                            | Formulation                                                  |
-| ------------------------------- | ------------------------------------------------------------ |
-| Time Series Forecasting         | [Next Token Prediction](https://proceedings.neurips.cc/paper_files/paper/2000/file/728f206c2a01bf572b5940d7d9a8fa4c-Paper.pdf) |
-| Imputation (Segment-level)      | [Denoising Autoencoding](https://dl.acm.org/doi/pdf/10.5555/3455716.3455856)                                   |
-| Anomaly Detection  (Predictive) | [Next Token Prediction](https://proceedings.neurips.cc/paper_files/paper/2000/file/728f206c2a01bf572b5940d7d9a8fa4c-Paper.pdf) |
+<p align="center">
+<img src="./figures/tasks.png" alt="300" align=center />
+</p>
 
 ## Performance
 
@@ -133,9 +113,35 @@ The decoder-only architecture provides additional flexibility to accommodate tim
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
-## Training on Custom Data
 
-Tutorials are provided in this [repo](https://github.com/thuml/iTransformer/tree/main/scripts/multivariate_forecasting).
+## Code for Fine-tuning
+
+1. Install Pytorch and necessary dependencies.
+
+```
+pip install -r requirements.txt
+```
+
+1. Put the datasets [[Google Drive]](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=sharing)
+[[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93388a1811584564a40a/) under the folder ```./dataset/```.
+
+2. Download the pre-trained checkpoints and put them under the folder ```./checkpoints/```.
+   * Timer_67M_UTSD_4G [[Google]](https://drive.google.com/file/d/1iTaKjDj7IX-GZZjEv7pKGcgyV7GObj-U/view?usp=sharing) [[Tsinghua]](https://cloud.tsinghua.edu.cn/f/e12e5c08131e481f8df6/)
+
+3. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
+
+```
+# forecasting
+bash ./scripts/forecast/ECL.sh
+
+# TODO: segement-level imputation
+bash ./scripts/imputation/ECL.sh
+
+# TODO: anomaly detection on the fly
+bash ./scripts/anomaly_detection/UCR.sh
+```
+
+4. Training on custom data: Tutorials are provided in this [repo](https://github.com/thuml/iTransformer/tree/main/scripts/multivariate_forecasting).
 
 ## Future Work
 
