@@ -1,6 +1,7 @@
 # Timer (Large Time Series Model)
 
-This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368), a Large Time Series Model for unified time series and tasks.
+This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368), a Large Time Series Model for unified time series and tasks. 
+
 
 <p align="center">
 <img src="./figures/unified.png" alt="" align=center />
@@ -8,7 +9,7 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.5) Our [project page](https://thuml.github.io/timer/) is available!
+:triangular_flag_on_post: **News** (2024.5) Our paper is accepted by ICML 2024.
 
 :triangular_flag_on_post: **News** (2024.4) Online API interface is coming soon, supporting **zero-shot forecasting**!
 
@@ -20,7 +21,8 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 ## Introduction
 
-**Tim**e Series Transfor**mer** (Timer) includes GPT-style Transformers pre-trained on multi-domain time series as Large Time Series Model (LTSM).
+**Tim**e Series Transfor**mer** (Timer) includes GPT-style Transformers pre-trained on multi-domain time series as Large Time Series Model (LTSM). 
+[**[Project Page]**](https://thuml.github.io/timer/)
 
 We curate large-scale datasets comprised of **1B time points**, proposing a unified training strategy with **single-series sequence**, and presenting Timer with the **decoder-only architecture**. As a LTSM, Timer is enabled with:
 
