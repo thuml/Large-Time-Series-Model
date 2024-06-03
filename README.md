@@ -9,9 +9,9 @@ This repo provides official code and checkpoints for [Timer: Transformers for Ti
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.5) Our paper is accepted by ICML 2024.
+:triangular_flag_on_post: **News** (2024.6) The pre-training datasets (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD)!
 
-:triangular_flag_on_post: **News** (2024.4) Online API interface is coming soon, supporting **zero-shot forecasting**!
+:triangular_flag_on_post: **News** (2024.5) Our paper is accepted by ICML 2024.
 
 :triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended to **15B** time points, exhibiting the zero-shot capability.
 
