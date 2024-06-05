@@ -128,7 +128,7 @@ The decoder-only architecture provides the flexibility to accommodate time serie
 
 ## Future Work
 
-We are preparing to provide the online service for zero-shot forecasting ([demo](https://thuml.github.io/timer/assets/img/demo.mp4)). Please stay tuned for the update!
+We are preparing to provide the online service for zero-shot forecasting. Please stay tuned for the update!
   
 
 ## Citation
