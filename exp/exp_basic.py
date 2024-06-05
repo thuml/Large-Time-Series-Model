@@ -2,17 +2,22 @@ import os
 
 import torch
 
-from models import Timer
+from models import TrmEncoder, Timer
 
 
 class Exp_Basic(object):
     def __init__(self, args):
         self.args = args
         self.model_dict = {
+            'TrmEncoder': TrmEncoder,
             'Timer': Timer,
         }
-        self.device = self._acquire_device()
-        self.model = self._build_model().to(self.device)
+        if self.args.use_multi_gpu:
+            self.model = self._build_model()
+            self.device = torch.device('cuda:{}'.format(self.args.local_rank))
+        else:
+            self.device = self._acquire_device()
+            self.model = self._build_model().to(self.device)
 
     def _build_model(self):
         raise NotImplementedError
@@ -20,7 +25,8 @@ class Exp_Basic(object):
 
     def _acquire_device(self):
         if self.args.use_gpu:
-            os.environ["CUDA_VISIBLE_DEVICES"] = str(self.args.gpu)
+            os.environ["CUDA_VISIBLE_DEVICES"] = str(
+                self.args.gpu) if not self.args.use_multi_gpu else self.args.devices
             device = torch.device('cuda:{}'.format(self.args.gpu))
             print('Use GPU: cuda:{}'.format(self.args.gpu))
         else:
@@ -31,11 +37,11 @@ class Exp_Basic(object):
     def _get_data(self):
         pass
 
-    def vali(self):
+    def vali(self, setting):
         pass
 
-    def train(self):
+    def finetune(self, setting):
         pass
 
-    def test(self):
+    def test(self, setting, test=0):
         pass

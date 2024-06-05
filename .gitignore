@@ -1,6 +1,3 @@
-.DS_Store
-dataset/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -8,8 +5,6 @@ __pycache__/
 
 # C extensions
 *.so
-
-*/.DS_Store
 
 # Distribution / packaging
 .Python
@@ -132,3 +127,41 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/scripts/long_term_forecast/Traffic_script/PatchTST1.sh
+/backups/
+/result.xlsx
+/~$result.xlsx
+/Time-Series-Library.zip
+/temp.sh
+
+.idea
+/tv_result.xlsx
+/test.py
+/m4_results/
+/test_results/
+/PatchTST_results.xlsx
+/seq_len_long_term_forecast/
+/progress.xlsx
+/scripts/short_term_forecast/PatchTST_M4.sh
+/run_tv.py
+
+/scripts/long_term_forecast/ETT_tv_script/
+/dataset/
+data_factory_all.py
+data_loader_all.py
+/scripts/short_term_forecast/tv_script/
+/exp/exp_short_term_forecasting_tv.py
+/exp/exp_long_term_forecasting_tv.py
+/timesnetv2.xlsx
+/scripts/anomaly_detection/tmp/
+/scripts/imputation/tmp/
+/utils/self_tools.py
+/scripts/exp_scripts/
+/checkpoints/
+/results/
+/cka/
+/backup/
+/debugr/
+/debug/
+/inference_results/
+/packages/

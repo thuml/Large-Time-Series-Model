@@ -1,101 +1,96 @@
 # Timer (Large Time Series Model)
 
-This repo provides official code and checkpoints for [Timer: Transformers for Time Series Analysis at Scale](https://arxiv.org/abs/2402.02368), a Large Time Series Model for unified time series and tasks. 
-
-
-<p align="center">
-<img src="./figures/unified.png" alt="" align=center />
-</p>
+This repo provides official code and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368).
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.6) The pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD)!
+:triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD)!
 
-:triangular_flag_on_post: **News** (2024.5) Our paper is accepted by ICML 2024.
+:triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
-:triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended to **28B** time points, exhibiting the zero-shot capability.
+:triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended, enabling zero-shot forecasting.
 
-:triangular_flag_on_post: **News** (2024.2) Releasing the fine-tune code for forecasting and model checkpoints on UTSD-4G.
+:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for adaptation.
 
 ## Introduction
 
-**Tim**e Series Transfor**mer** (Timer) includes GPT-style Transformers pre-trained on multi-domain time series as Large Time Series Model (LTSM). 
-[**[Project Page]**](https://thuml.github.io/timer/)
-
-We curate large-scale datasets comprised of **1B time points**, proposing a unified training strategy with **single-series sequence**, and presenting Timer with the **decoder-only architecture**. As a LTSM, Timer is enabled with:
-
-* **Generalization ability** that one model fits all domains.
-
-* **Task generality** that one model copes with various tasks.
-
-* **Scalability** that the performance increases with the scale of pre-training.
+**Tim**e Series Transfor**mer** (Timer) is a Generative Pre-trained Transformer for general time series analysis. You can visit our [Homepage](https://thuml.github.io/timer/) for a more detailed introduction.
 
 <p align="center">
 <img src="./figures/abilities.png" alt="" align=center />
 </p>
 
-## Showcases
+## Datasets
 
-> **Forecasting with data scarcity (limited downstream training samples)**
-
-<p align="center">
-<img src="./figures/showcases_forecast.png" alt="" align=center />
-</p>
-
-> **Segment-level imputation with few-shot samples**
-
-<p align="center">
-<img src="./figures/showcases_imputation.png" alt="" align=center />
-</p>
-
-> **On-the-fly anomaly detection on UCR Anomaly Archive**
-
-<p align="center">
-<img src="./figures/showcases_detection.png" alt="" align=center />
-</p>
-
-## Approach
-
-#### Large Dataset
-
-We curate **Unified Time Series Dataset (UTSD)** that includes 7 domains with up to 1 billion time points with hierarchical capacities to facilitate research of scalability and domain transfer.
+We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets/thuml/UTSD)) comprised of **1B time points** and **4 volumes** to facilitate the research on large time series models and pre-training.
 
 <p align="center">
 <img src="./figures/utsd.png" alt="" align=center />
 </p>
 
-#### Pre-training Strategy
+## Tasks
 
-To facilitate pre-training on extensive time series, we convert heterogeneous series into **single-series sequence (S3)**, **reserving the patterns of series variations with the unified context length**, towards the well-established tokenization like natural language.
+> **[Forecasting](./scripts/forecast/README.md)**: We provide all scripts as well as datasets for few-shot forecasting in this repo.
+
+> **[Imputation](./scripts/imputation/README.md)**:  We propose segment-level imputation, which is more challenging than point-level imputation.
+
+> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We provide new benchmarks of predictive anomaly detection on [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807).
+
+See each detailed README file in the folder ```./scripts/```.
+
+## Code for Fine-tuning 
+
+1. Install Pytorch and necessary dependencies.
+
+```
+pip install -r requirements.txt
+```
+
+2. Put the datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/6bc31f9a003b4d75a10b/) under the folder ```./dataset/```.
+
+3. Put the checkpoint from [Google Drive](https://drive.google.com/file/d/1vDy-nAwYwrppl61nvGpzordLlJAYLWf7/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/fd356758318847218605/) under the folder ```./checkpoints/```.
+
+4. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
+
+```bash
+# forecasting
+bash ./scripts/forecast/ECL.sh
+
+# segement-level imputation
+bash ./scripts/imputation/ECL.sh
+
+# anomaly detection
+bash ./scripts/anomaly_detection/UCR.sh
+```
+
+We provide the option for Direct Multi-Step (DMS) and Iterated Multi-Step (IMS) generation in each task through the argument `--use_ims`.
+
+## Approach
+
+### Pre-training and Adaptation
+
+To facilitate pre-training on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations with the unified context length. For diverse tasks, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
 
 <p align="center">
-<img src="./figures/pre-training.png" alt="300" height="300" align=center />
+<img src="./figures/pretrain_adaptation.png" align=center />
 </p>
 
-#### Model Architecture
+### Model Architecture
 
-With the substantial progress of decode-only large language models and evaluation of other backbone alternatives, we adopt the GPT-style Transformer with autoregressive generation towards LTSMs.
+Given the limited exploration of the backbone for large time series models, we extensively evaluate candidate backbones and adopt the decoder-only Transformer with autoregressive generation towards LTSMs.
 
 <p align="center">
-<img src="./figures/architecture.png" alt="300" align=center />
+<img src="./figures/architecture.png" align=center />
 </p>
 
-#### Unified Generative Task Formulation
-
-Timer is applicable on various tasks, which is realized in the unified generative approach.
-
-<p align="center">
-<img src="./figures/tasks.png" alt="300" align=center />
-</p>
 
 ## Performance
 
-We compare Timer with state-of-the-art approaches and present the pre-training benefit on data-scarce scenarios, known as the few-shot cpability of large models.
+We compare Timer with state-of-the-art approaches and present the pre-training benefit on few-shot scenarios.
 
 <p align="center">
-<img src="./figures/performance.png" alt="300" align=center />
+<img src="./figures/performance.png" align=center />
 </p>
-
 
 ## Scalability
 
@@ -107,41 +102,31 @@ By increasing the parameters and pre-training scale, Timer achieves notable perf
 
 ## Flexible Sequence Length
 
-The decoder-only architecture provides additional flexibility to accommodate time series of different lookback and forecast lengths.
+The decoder-only architecture provides the flexibility to accommodate time series of different lookback and forecast lengths.
 
 <p align="center">
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
+## Showcases
 
-## Code for Fine-tuning
+> **Forecasting under data scarcity**
 
-1. Install Pytorch and necessary dependencies.
+<p align="center">
+<img src="./figures/showcases_forecast.png" alt="" align=center />
+</p>
 
-```
-pip install -r requirements.txt
-```
+> **Imputation with few-shot samples**
 
-1. Put the datasets [[Google Drive]](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=sharing)
-[[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93388a1811584564a40a/) under the folder ```./dataset/```.
+<p align="center">
+<img src="./figures/showcases_imputation.png" alt="" align=center />
+</p>
 
-2. Download the pre-trained checkpoints and put them under the folder ```./checkpoints/```.
-   * Timer_67M_UTSD_4G [[Google]](https://drive.google.com/file/d/1iTaKjDj7IX-GZZjEv7pKGcgyV7GObj-U/view?usp=sharing) [[Tsinghua]](https://cloud.tsinghua.edu.cn/f/e12e5c08131e481f8df6/)
+> **Anomaly detection on UCR Anomaly Archive**
 
-3. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
-
-```
-# forecasting
-bash ./scripts/forecast/ECL.sh
-
-# TODO: segement-level imputation
-bash ./scripts/imputation/ECL.sh
-
-# TODO: anomaly detection on the fly
-bash ./scripts/anomaly_detection/UCR.sh
-```
-
-4. Training on custom data: Tutorials are provided in this [repo](https://github.com/thuml/iTransformer/tree/main/scripts/multivariate_forecasting).
+<p align="center">
+<img src="./figures/showcases_detection.png" alt="" align=center />
+</p>
 
 ## Future Work
 
@@ -154,10 +139,10 @@ If you find this repo helpful, please cite our paper.
 
 ```
 @article{liu2024timer,
-  title={Timer: Transformers for Time Series Analysis at Scale},
-  author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
-  journal={arXiv preprint arXiv:2402.02368},
-  year={2024} 
+ title={Timer: Transformers for Time Series Analysis at Scale},
+ author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+ journal={arXiv preprint arXiv:2402.02368},
+ year={2024} 
 }
 ```
 
@@ -165,7 +150,7 @@ If you find this repo helpful, please cite our paper.
 
 We appreciate the following GitHub repos a lot for their valuable code and efforts.
 - Time-Series-Library (https://github.com/thuml/Time-Series-Library)
-- iTransformer (https://github.com/thuml/iTransformer)
+- 
 
 ## Contact
 
