@@ -1,4 +1,4 @@
-# Large Time Series Model for Time Series Forecasting
+# Time Series Forecasting
 
 ## Dataset
 
@@ -10,16 +10,17 @@ Time series forecasting is essential and presents challenges in real-world appli
 
 ## Task Description
 
-### Few-shot 
+### Few-shot Generalization
+
 To construct data-scarce scenarios, we perform retrieval with the uniform interval in the training split according to the sampling ratio and conduct random shuffling at the end of each epoch to train the model. We keep the same validation and testing sets of original downstream datasets and train the baseline model and Timer with the same set of training samples.
 
 Set `--subset_rand_ratio` to decide the ratio of training samples in few-shot scenarios.
 
 ### Direct Multi-step (DMS) and Iterative Multi-step (IMS) Forecasting
 
-GPT has the flexibility to address unfixed context length and excels at multi-step generation by iteratively sliding and enlarging input tokens while small time series models generally refrain from iterative multi-step forecasting to mitigate error accumulation.
+GPT has the flexibility to address unfixed context length and excels at multi-step generation by iteratively sliding and enlarging input tokens. However. small time series models generally refrain from iterative multi-step forecasting to mitigate error accumulation.
 
-Timer adopts autoregression, a.k.a. Iterative Multi-step (IMS) in time series forecasting. During inference, we concatenate the prediction with the previous lookback series and iteratively generate the next token until reaching the desired length. We also provide implementations of Direct Multi-step (DMS)) approach for typical encoder-only forecasters. 
+Timer adopts autoregression, a.k.a. Iterative Multi-step (IMS) in time series forecasting. During inference, we concatenate the prediction with the previous lookback series and iteratively generate the next token until reaching the desired length. We also implement Direct Multi-step (DMS)) approach for typical encoder-only forecasters. 
 
 Set `--use_ims` to evaluate decoder-only models in the IMS way. If the option is not activated, the script evaluates encoder-only models with a fair comparison.
 
@@ -28,8 +29,8 @@ Set `--use_ims` to evaluate decoder-only models in the IMS way. If the option is
 
 To train with your time series dataset, you can try out the following steps:
 
-1. Read through the ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark```classes under the ```data_provider/data_loader``` folder, which provides the functionality to load and process time series files and train the model in DMS mode or IMS mode.
-2. The file should be ```csv``` format with the first column containing the timestamp and the following columns containing the variates of time series.
+1. Read through the ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark```classes under the ```data_provider/data_loader``` folder, which provides the functionality to load and process time series files and evaluate models in DMS mode or IMS mode.
+2. File should be ```csv``` format with the first column containing timestamps and the following columns containing the variates of time series.
 
 ## Scripts
 

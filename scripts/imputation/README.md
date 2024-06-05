@@ -1,4 +1,4 @@
-# Large Time Series Model for Time Series Segment Imputation
+# Time Series Imputation
 
 Imputation is ubiquitous in real-world applications, aiming to fill corrupted time series based on partially observed data. However, while various machine learning algorithms and simple linear interpolation can effectively cope with the corruptions randomly happening at the point level, real-world corruptions typically result from prolonged monitor shutdowns and require a continuous period of recovery. Consequently, imputation can be ever challenging when attempting to recover a span of time points encompassing intricate series variations.
 
