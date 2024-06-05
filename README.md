@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 2. Put the datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/6bc31f9a003b4d75a10b/) under the folder ```./dataset/```.
 
-3. Put the checkpoint from [Google Drive](https://drive.google.com/file/d/1vDy-nAwYwrppl61nvGpzordLlJAYLWf7/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/fd356758318847218605/) under the folder ```./checkpoints/```.
+3. Put the checkpoint from [Google Drive](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/d/235e6bfcf5fa440bb119/) under the folder ```./checkpoints/```.
 
 4. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
 
