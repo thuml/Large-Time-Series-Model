@@ -36,8 +36,6 @@ We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets
 
 > **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We provide new benchmarks of predictive anomaly detection on [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807).
 
-See each detailed README file in the folder ```./scripts/```.
-
 ## Code for Fine-tuning 
 
 1. Install Pytorch and necessary dependencies.
@@ -63,13 +61,13 @@ bash ./scripts/imputation/ECL.sh
 bash ./scripts/anomaly_detection/UCR.sh
 ```
 
-We provide the option for Direct Multi-Step (DMS) and Iterated Multi-Step (IMS) generation in each task through the argument `--use_ims`.
+We also provide detailed README files for each task in folder ```./scripts/```.
 
 ## Approach
 
 ### Pre-training and Adaptation
 
-To facilitate pre-training on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations with the unified context length. For diverse tasks, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
+To pre-train on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations with the unified context length. Further, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
 
 <p align="center">
 <img src="./figures/pretrain_adaptation.png" align=center />
@@ -77,7 +75,7 @@ To facilitate pre-training on heterogeneous time series, we propose **single-ser
 
 ### Model Architecture
 
-Given the limited exploration of the backbone for large time series models, we extensively evaluate candidate backbones and adopt the decoder-only Transformer with autoregressive generation towards LTSMs.
+Given the limited exploration of **the backbone for large time series models**, we extensively evaluate candidate backbones and adopt the decoder-only Transformer with autoregressive generation towards LTSMs.
 
 <p align="center">
 <img src="./figures/architecture.png" align=center />
@@ -86,7 +84,7 @@ Given the limited exploration of the backbone for large time series models, we e
 
 ## Performance
 
-We compare Timer with state-of-the-art approaches and present the pre-training benefit on few-shot scenarios.
+Timer achieves **state-of-the-art** performance in each task and we present the pre-training benefit on few-shot scenarios.
 
 <p align="center">
 <img src="./figures/performance.png" align=center />
@@ -150,7 +148,7 @@ If you find this repo helpful, please cite our paper.
 
 We appreciate the following GitHub repos a lot for their valuable code and efforts.
 - Time-Series-Library (https://github.com/thuml/Time-Series-Library)
-- 
+
 
 ## Contact
 
