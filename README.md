@@ -28,6 +28,8 @@ We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets
 <img src="./figures/utsd.png" alt="" align=center />
 </p>
 
+Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) to facilitate the research of large models and pre-training in the field of time series.
+
 ## Tasks
 
 > **[Forecasting](./scripts/forecast/README.md)**: We provide all scripts as well as datasets for few-shot forecasting in this repo.
