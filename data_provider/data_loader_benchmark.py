@@ -12,8 +12,7 @@ warnings.filterwarnings('ignore')
 
 class CIDatasetBenchmark(Dataset):
     def __init__(self, root_path='dataset', flag='train', input_len=None, pred_len=None,
-                 data_type='custom', scale=True, timeenc=1, freq='h', stride=1, subset_rand_ratio=1.0,
-                 in_context_interval=None):
+                 data_type='custom', scale=True, timeenc=1, freq='h', stride=1, subset_rand_ratio=1.0):
         self.subset_rand_ratio = subset_rand_ratio
         # size [seq_len, label_len, pred_len]
         # info
@@ -34,7 +33,6 @@ class CIDatasetBenchmark(Dataset):
 
         self.root_path = root_path
         self.dataset_name = self.root_path.split('/')[-1].split('.')[0]
-        self.in_context_interval = in_context_interval
 
         self.__read_data__()
 
@@ -124,11 +122,6 @@ class CIDatasetBenchmark(Dataset):
         self.data_y = data[border1:border2]
         self.data_stamp = data_stamp[border1:border2]
 
-        if self.in_context_interval is not None:
-            self.data_context = data[border1 - self.in_context_interval:border2 - self.in_context_interval]
-            self.data_context_stamp = data_stamp[border1 - self.in_context_interval:border2 - self.in_context_interval]
-
-
         self.n_var = self.data_x.shape[-1]
         self.n_timepoint = len(self.data_x) - self.input_len - self.pred_len + 1
 
@@ -136,7 +129,7 @@ class CIDatasetBenchmark(Dataset):
         if self.set_type == 0:
             index = index * self.internal
         c_begin = index // self.n_timepoint  # select variable
-        s_begin = index % self.n_timepoint  # select start time
+        s_begin = index % self.n_timepoint   # select start time
         s_end = s_begin + self.input_len
         r_begin = s_end
         r_end = r_begin + self.pred_len

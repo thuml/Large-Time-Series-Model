@@ -38,6 +38,8 @@ Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/U
 
 > **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We provide new benchmarks of predictive anomaly detection on [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807).
 
+We provide detailed README files illustrating each task under the folder ```./scripts/```.
+
 ## Code for Fine-tuning 
 
 1. Install Pytorch and necessary dependencies.
@@ -63,14 +65,13 @@ bash ./scripts/imputation/ECL.sh
 bash ./scripts/anomaly_detection/UCR.sh
 ```
 
-We also provide detailed README files for each task in folder ```./scripts/```.
-
-## Training on Custom Dataset
+## Train on Custom Dataset
 
 To train with your time series dataset, you can try out the following steps:
 
-1. Read through the ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark```classes under the ```data_provider/data_loader``` folder, which provides the functionality to load and process time series files and evaluate models in direct multi-step mode and iterative multi-step  mode.
-2. File should be ```csv``` format with the first column containing timestamps and the following columns containing the variates of time series.
+1. The essense is to reload the customized dataloader and load the pre-trained checkpoint (See ```./scripts/``` folder).
+2. ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark``` in the ```data_provider``` folder load, process ```csv``` files, and evaluate models in direct multi-step mode and iterative multi-step mode.
+
 
 ## Approach
 
