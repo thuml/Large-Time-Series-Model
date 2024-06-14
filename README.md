@@ -65,6 +65,13 @@ bash ./scripts/anomaly_detection/UCR.sh
 
 We also provide detailed README files for each task in folder ```./scripts/```.
 
+## Training on Custom Dataset
+
+To train with your time series dataset, you can try out the following steps:
+
+1. Read through the ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark```classes under the ```data_provider/data_loader``` folder, which provides the functionality to load and process time series files and evaluate models in direct multi-step mode and iterative multi-step  mode.
+2. File should be ```csv``` format with the first column containing timestamps and the following columns containing the variates of time series.
+
 ## Approach
 
 ### Pre-training and Adaptation
