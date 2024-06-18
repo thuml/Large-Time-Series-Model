@@ -30,6 +30,98 @@ We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets
 
 Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) to facilitate the research of large models and pre-training in the field of time series.
 
+###  Usage
+
+You can load UTSD in the style of [Time-Series-Library](https://github.com/thuml/Time-Series-Library) based on the following dataset code:
+
+```python
+import datasets
+import numpy as np
+from torch.utils.data import Dataset
+from sklearn.preprocessing import StandardScaler
+from tqdm import tqdm
+
+class UTSDDataset(Dataset):
+    def __init__(self, remote=True, root_path=r'UTSD-1G', flag='train', input_len=None, pred_len=None, scale=True,
+                 stride=1, split=0.9):
+        self.input_len = input_len
+        self.pred_len = pred_len
+        self.seq_len = input_len + pred_len
+        assert flag in ['train', 'val']
+        assert split >= 0 and split <=1.0
+        type_map = {'train': 0, 'val': 1, 'test': 2}
+        self.set_type = type_map[flag]
+        self.flag = flag
+        self.scale = scale
+        self.split = split
+        self.stride = stride
+        self.remote = remote
+
+        self.data_list = []
+        self.n_window_list = []
+
+        self.root_path = root_path
+        self.__read_data__()
+
+    def __read_data__(self):
+        if self.remote:
+            dataset = datasets.load_dataset("thuml/UTSD", "UTSD-1G")['train']
+        else:
+            dataset = datasets.load_from_disk(self.root_path)
+
+        print(dataset)
+        for item in tqdm(dataset):
+            self.scaler = StandardScaler()
+            data = item['target']
+            data = np.array(data).reshape(-1, 1)
+            num_train = int(len(data) * self.split)
+            border1s = [0, num_train - self.seq_len]
+            border2s = [num_train, len(data)]
+
+            border1 = border1s[self.set_type]
+            border2 = border2s[self.set_type]
+
+            if self.scale:
+                train_data = data[border1s[0]:border2s[0]]
+                self.scaler.fit(train_data)
+                data = self.scaler.transform(data)
+
+            data = data[border1:border2]
+            n_window = (len(data) - self.seq_len) // self.stride + 1
+            if n_window < 1:
+                continue
+
+            self.data_list.append(data)
+            self.n_window_list.append(n_window if len(self.n_window_list) == 0 else self.n_window_list[-1] + n_window)
+
+
+    def __getitem__(self, index):
+        dataset_index = 0
+        while index >= self.n_window_list[dataset_index]:
+            dataset_index += 1
+
+        index = index - self.n_window_list[dataset_index - 1] if dataset_index > 0 else index
+        n_timepoint = (len(self.data_list[dataset_index]) - self.seq_len) // self.stride + 1
+
+        s_begin = index % n_timepoint
+        s_begin = self.stride * s_begin
+        s_end = s_begin + self.seq_len
+        p_begin = s_end
+        p_end = p_begin + self.pred_len
+        seq_x = self.data_list[dataset_index][s_begin:s_end, :]
+        seq_y = self.data_list[dataset_index][p_begin:p_end, :]
+
+        return seq_x, seq_y
+
+    def __len__(self):
+        return self.n_window_list[-1]
+
+dataset = UTSDDataset(input_len=1440, pred_len=96)
+print(len(dataset))
+```
+
+
+
 ## Tasks
 
 > **[Forecasting](./scripts/forecast/README.md)**: We provide all scripts as well as datasets for few-shot forecasting in this repo.
