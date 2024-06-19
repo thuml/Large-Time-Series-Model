@@ -1,10 +1,10 @@
 # Timer (Large Time Series Model)
 
-This repo provides official code and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
+This repo provides official code, datasets and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD). UTSD dataloader is contained in this repo.
+:triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD). Dataloader is also contained.
 
 :triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
@@ -32,7 +32,7 @@ Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/U
 
 ###  Usage
 
-You can access and load UTSD in the style of [Time-Series-Library](https://github.com/thuml/Time-Series-Library) based on the following:
+You can access and load UTSD in the style of [TSLib](https://github.com/thuml/Time-Series-Library) based on the following:
 
 ```bash
 # huggingface-cli login
@@ -63,7 +63,7 @@ We provide detailed README files illustrating each task under the folder ```./sc
 pip install -r requirements.txt
 ```
 
-2. Put the datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/6bc31f9a003b4d75a10b/) under the folder ```./dataset/```.
+2. Put downstream datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/6bc31f9a003b4d75a10b/) under the folder ```./dataset/```.
 
 3. Put the checkpoint from [Google Drive](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link) and [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/d/235e6bfcf5fa440bb119/) under the folder ```./checkpoints/```.
 
@@ -82,10 +82,10 @@ bash ./scripts/anomaly_detection/UCR.sh
 
 ## Train on Custom Dataset
 
-To train with your time series dataset, you can try out the following steps:
+To fine-tune on your time series dataset, you can try out the following steps:
 
 1. The essense is to reload the customized dataloader and load the pre-trained checkpoint (See ```./scripts/``` folder).
-2. ```CIDatasetBenchmark``` and ```CIAutoRegressionDatasetBenchmark``` in the ```data_provider``` folder load, process ```csv``` files, and evaluate models in direct multi-step mode and iterative multi-step mode.
+2. ```CIDatasetBenchmark```/```CIAutoRegressionDatasetBenchmark``` in the ```data_provider``` folder can train and evaluate models in direct / iterative multi-step mode.
 
 
 ## Approach
@@ -131,25 +131,15 @@ The decoder-only architecture provides the flexibility to accommodate time serie
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
-## Showcases
+## Benchmark
 
-> **Forecasting under data scarcity**
-
-<p align="center">
-<img src="./figures/showcases_forecast.png" alt="" align=center />
-</p>
-
-> **Imputation with few-shot samples**
+Given the significant value to researchers and practitioners, we provide a summary of concurrent LTSMs:
 
 <p align="center">
-<img src="./figures/showcases_imputation.png" alt="" align=center />
+<img src="./figures/quality.png" alt="300" align=center />
 </p>
 
-> **Anomaly detection on UCR Anomaly Archive**
-
-<p align="center">
-<img src="./figures/showcases_detection.png" alt="" align=center />
-</p>
+We also establish the first zero-shot forecasting benchmark in [our paper](https://arxiv.org/abs/2402.02368) (See Section 4.6 for the details).
 
 ## Future Work
 
@@ -161,11 +151,10 @@ We are preparing to provide the online service for zero-shot forecasting. Please
 If you find this repo helpful, please cite our paper. 
 
 ```
-@article{liu2024timer,
- title={Timer: Transformers for Time Series Analysis at Scale},
- author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
- journal={arXiv preprint arXiv:2402.02368},
- year={2024} 
+@inproceedings{liutimer,
+  title={Timer: Generative Pre-trained Transformers Are Large Time Series Models},
+  author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+  booktitle={Forty-first International Conference on Machine Learning}
 }
 ```
 
@@ -180,3 +169,4 @@ We appreciate the following GitHub repos a lot for their valuable code and effor
 If you have any questions or want to use the code, feel free to contact:
 * Yong Liu (liuyong21@mails.tsinghua.edu.cn)
 * Haoran Zhang (z-hr20@mails.tsinghua.edu.cn)
+* Chenyu Li (lichenyu20@mails.tsinghua.edu.cn)
