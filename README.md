@@ -139,7 +139,12 @@ Given the significant value to researchers and practitioners, we provide a summa
 <img src="./figures/quality.png" alt="300" align=center />
 </p>
 
-We also establish the first zero-shot forecasting benchmark in [our paper](https://arxiv.org/abs/2402.02368) (See Section 4.6 for the details).
+We also establish the first zero-shot benchmark to measure LTSMs as a general-purpose forecaster.
+
+<p align="center">
+<img src="./figures/zero-shot.png" alt="300" align=center />
+</p>
+
 
 ## Future Work
 
