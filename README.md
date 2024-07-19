@@ -145,11 +145,10 @@ We also establish the first zero-shot benchmark to measure LTSMs as a general-pu
 <img src="./figures/zero-shot.png" alt="300" align=center />
 </p>
 
+It should be noticed that the zero-shot performance of concurrent Large Time Series models is still lagged behind large models based on few-shot fine-tuning or end-to-end training (similar to the challenges GPT-3 faced in 2020). 
 
-## Future Work
+This is why we hightlight the few-shot ability of LTSMs instead of making zero-shot predictions on real-world application now. It is a long but promising direction to develop large models for ZSF.
 
-We are preparing to provide the online service for zero-shot forecasting. Please stay tuned for the update!
-  
 
 ## Citation
 
