@@ -133,21 +133,30 @@ The decoder-only architecture provides the flexibility to accommodate time serie
 
 ## Benchmark
 
-Given the significant value to researchers and practitioners, we provide a summary of concurrent LTSMs:
+Given the significant value to researchers and practitioners, we provide a summary of several concurrent Large Time Series Models:
+
+* [MOMENT](https://arxiv.org/abs/2402.03885) is trained on large scale by masking modeling. It can be applied to zero-shot forecasting by concatenating lookback series with a mask with the length to be predicted.
+* [Chronos](https://arxiv.org/abs/2403.07815) is a probabilistic point-level forecaster developed by [Amazon](https://huggingface.co/amazon/chronos-t5-large). Chronos-S1 samples one prediction trajectory and Chronos-S20 uses the mean of sampled 20 trajectories.
+* [TimesFM](https://arxiv.org/abs/2310.10688) from Google is trained on 100B time points. We use the official checkpoint from [HuggingFace]( https://huggingface.co/google/timesfm-1.0-200m). It supports dynamic input and output prediction lengths.
+* [Moiria]() is developed by Saleforce, exceling at multivariate time series. It has three different [checkpoints](https://huggingface.co/collections/Salesforce/moirai-10-r-models-65c8d3a94c51428c300e0742), labeled as Moiria-S, Moiria-M, and Moiria-L.
+* Timer: We evaluate three versions: Timer-1B is pre-trained on UTSD; Timer-16B is pre-trained on UTSD and [Buildings900K](https://arxiv.org/abs/2307.00142); and Timer-28B is pre-trained on UTSD and [LOTSA](https://huggingface.co/datasets/Salesforce/lotsa\_data).
 
 <p align="center">
 <img src="./figures/quality.png" alt="300" align=center />
 </p>
 
-We also establish the first zero-shot benchmark to measure LTSMs as a general-purpose forecaster.
+We also establish the first **zero-shot benchmark** to measure LTSMs as a general-purpose forecaster.
+
+<p align="center">
+<img src="./figures/zero-shot-all.png" alt="300" align=center />
+</p>
 
 <p align="center">
 <img src="./figures/zero-shot.png" alt="300" align=center />
 </p>
 
-It should be noticed that the zero-shot performance of concurrent Large Time Series models is still lagged behind large models based on few-shot fine-tuning or end-to-end training (similar to the challenges GPT-3 faced in 2020). 
 
-This is why we hightlight the few-shot ability of LTSMs instead of making zero-shot predictions on real-world application now. It is a long but promising direction to develop large models for ZSF.
+It should be noticed that the zero-shot performance of concurrent Large Time Series Models is still lagged behind large models based on few-shot fine-tuning or end-to-end training (similar to the challenges GPT-3 faced in 2020). 
 
 
 ## Citation
@@ -166,6 +175,8 @@ If you find this repo helpful, please cite our paper.
 
 We appreciate the following GitHub repos a lot for their valuable code and efforts.
 - Time-Series-Library (https://github.com/thuml/Time-Series-Library)
+- LOTSA (https://huggingface.co/datasets/Salesforce/lotsa_data) 
+- UCR Anomaly Archiv (https://arxiv.org/abs/2009.13807)
 
 
 ## Contributors
