@@ -176,7 +176,7 @@ If you find this repo helpful, please cite our paper.
 We appreciate the following GitHub repos a lot for their valuable code and efforts.
 - Time-Series-Library (https://github.com/thuml/Time-Series-Library)
 - LOTSA (https://huggingface.co/datasets/Salesforce/lotsa_data) 
-- UCR Anomaly Archiv (https://arxiv.org/abs/2009.13807)
+- UCR Anomaly Archive (https://arxiv.org/abs/2009.13807)
 
 
 ## Contributors
