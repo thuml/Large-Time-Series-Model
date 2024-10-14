@@ -1,4 +1,4 @@
-> **Important Note**: Given the prevalence of large time series models. This code base will be renamed as ```large-time-series-model-library```. At that time, we will open source the pre-training code of large time series models, large-scale data loading logic, related benchmarks, and well-known large model code implementation in the field. Please stay tuned for the update!
+> **Important Note**: Given the prevalence of large time series models. This code base will be soon renamed as ```large-time-series-model-library```. At that time, we will open source the pre-training code of large time series models, large-scale data loading logic, related benchmarks, and well-known large model architecture in the field. Please stay tuned for the update!
 
 # Timer (Large Time Series Model)
 
