@@ -1,3 +1,5 @@
+> **Important Note**: Given the prevalence of large time series models. This code base will be renamed as ```large-time-series-model-library```. At that time, we will open source the pre-training code of large time series models, large-scale data loading logic, related benchmarks, and well-known large model code implementation in the field. Please stay tuned for the update!
+
 # Timer (Large Time Series Model)
 
 This repo provides official code, datasets and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
