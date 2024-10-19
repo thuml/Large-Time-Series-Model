@@ -1,9 +1,14 @@
-> **Important Note**: Given the prevalence of large time series models. We will open source a new repository containing the pre-training code of large time series models, large-scale data loading logic, related adaption procedure and benchmarks, and well-known large models in this field. Please stay tuned for the update :)
-# Timer (Large Time Series Model)
+> [!NOTE]
+> Given the prevalence of large models. We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM) to explore the design philosophy of large time-series models, which contains a thorough pipeline to develop and evaluate large time-series models :)
+
+
+# Timer (Large Time-Series Model)
 
 This repo provides official code, datasets and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
 
 # Updates
+
+:triangular_flag_on_post: **News** (2024.10) Timer is included in [OpenLTM (Open-Source Large Time-Series Models)](https://github.com/thuml/OpenLTM).
 
 :triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD). Dataloader is also contained.
 
@@ -23,7 +28,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 ## Datasets
 
-We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets/thuml/UTSD)) comprised of **1B time points** and **4 volumes** to facilitate the research on large time series models and pre-training.
+We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets/thuml/UTSD)) comprised of **1B time points** and **4 volumes** to facilitate the research on large time-series models and pre-training.
 
 <p align="center">
 <img src="./figures/utsd.png" alt="" align=center />
@@ -101,7 +106,7 @@ To pre-train on heterogeneous time series, we propose **single-series sequence (
 
 ### Model Architecture
 
-Given the limited exploration of **the backbone for large time series models**, we extensively evaluate candidate backbones and adopt the decoder-only Transformer with autoregressive generation towards LTSMs.
+Given the limited exploration of **the backbone for large time-series models**, we extensively evaluate candidate backbones and adopt the decoder-only Transformer with autoregressive generation towards LTMs.
 
 <p align="center">
 <img src="./figures/architecture.png" align=center />
@@ -134,7 +139,7 @@ The decoder-only architecture provides the flexibility to accommodate time serie
 
 ## Benchmark
 
-Given the significant value to researchers and practitioners, we provide a summary of several concurrent Large Time Series Models:
+Given the significant value to researchers and practitioners, we provide a summary of several concurrent large time-series models:
 
 * [MOMENT](https://arxiv.org/abs/2402.03885) is trained on large scale by masking modeling. It can be applied to zero-shot forecasting by concatenating lookback series with a mask with the length to be predicted.
 * [Chronos](https://arxiv.org/abs/2403.07815) is a probabilistic point-level forecaster developed by [Amazon](https://huggingface.co/amazon/chronos-t5-large). Chronos-S1 samples one prediction trajectory and Chronos-S20 uses the mean of sampled 20 trajectories.
@@ -146,7 +151,7 @@ Given the significant value to researchers and practitioners, we provide a summa
 <img src="./figures/quality.png" alt="300" align=center />
 </p>
 
-We also establish the first **zero-shot benchmark** to measure LTSMs as a general-purpose forecaster.
+We also establish the first **zero-shot benchmark** to measure LTMs as a general-purpose forecaster.
 
 <p align="center">
 <img src="./figures/zero-shot-all.png" alt="300" align=center />
@@ -155,10 +160,6 @@ We also establish the first **zero-shot benchmark** to measure LTSMs as a genera
 <p align="center">
 <img src="./figures/zero-shot.png" alt="300" align=center />
 </p>
-
-
-It should be noticed that the zero-shot performance of concurrent Large Time Series Models is still lagged behind large models based on few-shot fine-tuning or end-to-end training (similar to the challenges GPT-3 faced in 2020). 
-
 
 ## Citation
 
