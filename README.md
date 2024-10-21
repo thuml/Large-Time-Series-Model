@@ -8,6 +8,8 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 # Updates
 
+:triangular_flag_on_post: **News** (2024.10) We release the numpy format of [UTSD](https://huggingface.co/datasets/thuml/UTSD). An easier and more efficient dataloader can be found [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py#L503).
+
 :triangular_flag_on_post: **News** (2024.10) Timer is included in [OpenLTM (Open-Source Large Time-Series Models)](https://github.com/thuml/OpenLTM).
 
 :triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD). Dataloader is also contained.
