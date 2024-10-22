@@ -146,7 +146,7 @@ Given the significant value to researchers and practitioners, we provide a summa
 * [MOMENT](https://arxiv.org/abs/2402.03885) is trained on large scale by masking modeling. It can be applied to zero-shot forecasting by concatenating lookback series with a mask with the length to be predicted.
 * [Chronos](https://arxiv.org/abs/2403.07815) is a probabilistic point-level forecaster developed by [Amazon](https://huggingface.co/amazon/chronos-t5-large). Chronos-S1 samples one prediction trajectory and Chronos-S20 uses the mean of sampled 20 trajectories.
 * [TimesFM](https://arxiv.org/abs/2310.10688) from Google is trained on 100B time points. We use the official checkpoint from [HuggingFace]( https://huggingface.co/google/timesfm-1.0-200m). It supports dynamic input and output prediction lengths.
-* [Moiria]() is developed by Saleforce, exceling at multivariate time series. It has three different [checkpoints](https://huggingface.co/collections/Salesforce/moirai-10-r-models-65c8d3a94c51428c300e0742), labeled as Moiria-S, Moiria-M, and Moiria-L.
+* [Moirai](https://arxiv.org/abs/2402.02592) is developed by Saleforce, exceling at multivariate time series. It has three different [checkpoints](https://huggingface.co/collections/Salesforce/moirai-10-r-models-65c8d3a94c51428c300e0742), labeled as Moirai-S, Moirai-M, and Moirai-L.
 * Timer: We evaluate three versions: Timer-1B is pre-trained on UTSD; Timer-16B is pre-trained on UTSD and [Buildings900K](https://arxiv.org/abs/2307.00142); and Timer-28B is pre-trained on UTSD and [LOTSA](https://huggingface.co/datasets/Salesforce/lotsa\_data).
 
 <p align="center">
