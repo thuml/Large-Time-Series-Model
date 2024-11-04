@@ -23,10 +23,10 @@ class Model(nn.Module):
         self.patch_embedding = PatchEmbedding(
             self.d_model, self.patch_len, self.stride, padding, self.dropout)
 
-        # Decoder
+        # Decoder-only Transformer: Refer to issue: https://github.com/thuml/Large-Time-Series-Model/issues/23
         self.decoder = Encoder(
             [
-                EncoderLayer(
+                 EncoderLayer(
                     AttentionLayer(
                         FullAttention(True, configs.factor, attention_dropout=configs.dropout,
                                       output_attention=True), configs.d_model, configs.n_heads),

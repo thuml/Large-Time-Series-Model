@@ -41,39 +41,6 @@ class Model(nn.Module):
                 else:
                     raise NotImplementedError
 
-    def encoder_top(self, x_enc, x_mark_enc, x_dec, x_mark_dec):
-        # Normalization from Non-stationary Transformer
-        means = x_enc.mean(1, keepdim=True).detach()
-        x_enc = x_enc - means
-        stdev = torch.sqrt(torch.var(x_enc, dim=1, keepdim=True, unbiased=False) + 1e-5).detach()
-        x_enc /= stdev
-
-        # do patching and embedding
-        x_enc = x_enc.permute(0, 2, 1)
-        # u: [bs * nvars x patch_num x d_model]
-        dec_in, n_vars = self.enc_embedding(x_enc)
-
-        # Encoder
-        # z: [bs * nvars x patch_num x d_model]
-
-        return dec_in
-
-    def encoder_bottom(self, x_enc, x_mark_enc, x_dec, x_mark_dec):
-        # Normalization from Non-stationary Transformer
-        means = x_enc.mean(1, keepdim=True).detach()
-        x_enc = x_enc - means
-        stdev = torch.sqrt(torch.var(x_enc, dim=1, keepdim=True, unbiased=False) + 1e-5).detach()
-        x_enc /= stdev
-
-        # do patching and embedding
-        x_enc = x_enc.permute(0, 2, 1)
-        # u: [bs * nvars x patch_num x d_model]
-        dec_in, n_vars = self.enc_embedding(x_enc) # [B * M, N, D]
-
-        # Encoder
-        dec_out, attns = self.decoder(dec_in) # [B * M, N, D]
-        return dec_out
-
     def forecast(self, x_enc, x_mark_enc, x_dec, x_mark_dec, mask=None):
         B, L, M = x_enc.shape
 
@@ -87,7 +54,7 @@ class Model(nn.Module):
         x_enc = x_enc.permute(0, 2, 1) # [B, M, T]
         dec_in, n_vars = self.enc_embedding(x_enc) # [B * M, N, D]
 
-        # Encoder
+        # Transformer Blocks
         dec_out, attns = self.decoder(dec_in) # [B * M, N, D]
         dec_out = self.proj(dec_out) # [B * M, N, L]
         dec_out = dec_out.reshape(B, M, -1).transpose(1, 2) # [B, T, M]
@@ -114,7 +81,7 @@ class Model(nn.Module):
         x_enc = x_enc.permute(0, 2, 1) # [B, M, T]
         dec_in, n_vars = self.enc_embedding(x_enc) # [B * M, N, D]
 
-        # Encoder
+        # Transformer Blocks
         dec_out, attns = self.decoder(dec_in) # [B * M, N, D]
         dec_out = self.proj(dec_out) # [B * M, N, L]
         dec_out = dec_out.reshape(B, M, -1).transpose(1, 2) # [B, T, M]
@@ -136,7 +103,7 @@ class Model(nn.Module):
         x_enc = x_enc.permute(0, 2, 1) # [B, M, T]
         dec_in, n_vars = self.enc_embedding(x_enc) # [B * M, N, D]
 
-        # Encoder
+        # Transformer Blocks
         dec_out, attns = self.decoder(dec_in) # [B * M, N, D]
         dec_out = self.proj(dec_out) # [B * M, N, L]
         dec_out = dec_out.reshape(B, M, -1).transpose(1, 2) # [B, T, M]
