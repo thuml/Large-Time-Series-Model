@@ -237,7 +237,7 @@ class Exp_Forecast(Exp_Basic):
                     pred_y = torch.cat(pred_y, dim=1)
 
                     if dis != 0:
-                        pred_y = pred_y[:, :-dis, :]
+                        pred_y = pred_y[:, :-self.args.pred_len+dis, :]
 
                     if self.args.use_ims:
                         batch_y = batch_y[:, self.args.label_len:self.args.label_len + self.args.output_len, :].to(
