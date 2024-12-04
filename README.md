@@ -1,5 +1,5 @@
 > [!NOTE]
-> Given the prevalence of large models. We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM) to explore the design philosophy of large time-series models, which contains a thorough pipeline to develop and evaluate large time-series models :)
+> Given the prevalence of large models. We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM) to explore the design philosophy of large time-series models, which contains a simple pipeline to train and evaluate large time-series models :)
 
 
 # Timer (Large Time-Series Model)
@@ -7,6 +7,8 @@
 This repo provides official code, datasets and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
 
 # Updates
+
+:triangular_flag_on_post: **News** (2024.12) We enhanced Timer with our [further work](https://arxiv.org/abs/2410.04803) and pre-trained on **307B time points**. The checkpoint will be released on [HuggingFace](https://huggingface.co/thuml/timer-1.1-84m) and support zero-shot forecasting.
 
 :triangular_flag_on_post: **News** (2024.10) We release numpy format of [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/). An easier and more efficient dataloader can be found [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
@@ -16,9 +18,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 :triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
-:triangular_flag_on_post: **News** (2024.4) The pre-training scale has been extended, enabling zero-shot forecasting.
-
-:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for adaptation.
+:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning.
 
 ## Introduction
 
@@ -30,13 +30,11 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 ## Datasets
 
-We curate [Unified Time Series Datasets (UTSD)]((https://huggingface.co/datasets/thuml/UTSD)) comprised of **1B time points** and **4 volumes** to facilitate the research on large time-series models and pre-training.
+We propose Unified Time Series Datasets (UTSD), which encompass well-curated time series to facilitate the research on large time-series models. Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD).
 
 <p align="center">
 <img src="./figures/utsd.png" alt="" align=center />
 </p>
-
-Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) to facilitate the research of large models and pre-training in the field of time series.
 
 ###  Usage
 
@@ -139,7 +137,7 @@ The decoder-only architecture provides the flexibility to accommodate time serie
 <img src="./figures/length.png" alt="300" align=center />
 </p>
 
-## Benchmark
+## Related Works
 
 Given the significant value to researchers and practitioners, we provide a summary of several concurrent large time-series models:
 
@@ -147,20 +145,9 @@ Given the significant value to researchers and practitioners, we provide a summa
 * [Chronos](https://arxiv.org/abs/2403.07815) is a probabilistic point-level forecaster developed by [Amazon](https://huggingface.co/amazon/chronos-t5-large). Chronos-S1 samples one prediction trajectory and Chronos-S20 uses the mean of sampled 20 trajectories.
 * [TimesFM](https://arxiv.org/abs/2310.10688) from Google is trained on 100B time points. We use the official checkpoint from [HuggingFace]( https://huggingface.co/google/timesfm-1.0-200m). It supports dynamic input and output prediction lengths.
 * [Moirai](https://arxiv.org/abs/2402.02592) is developed by Saleforce, exceling at multivariate time series. It has three different [checkpoints](https://huggingface.co/collections/Salesforce/moirai-10-r-models-65c8d3a94c51428c300e0742), labeled as Moirai-S, Moirai-M, and Moirai-L.
-* Timer: We evaluate three versions: Timer-1B is pre-trained on UTSD; Timer-16B is pre-trained on UTSD and [Buildings900K](https://arxiv.org/abs/2307.00142); and Timer-28B is pre-trained on UTSD and [LOTSA](https://huggingface.co/datasets/Salesforce/lotsa\_data).
-
+  
 <p align="center">
 <img src="./figures/quality.png" alt="300" align=center />
-</p>
-
-We also establish the first **zero-shot benchmark** to measure LTMs as a general-purpose forecaster.
-
-<p align="center">
-<img src="./figures/zero-shot-all.png" alt="300" align=center />
-</p>
-
-<p align="center">
-<img src="./figures/zero-shot.png" alt="300" align=center />
 </p>
 
 ## Citation
@@ -173,20 +160,19 @@ If you find this repo helpful, please cite our paper.
   author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
   booktitle={Forty-first International Conference on Machine Learning}
 }
+
+@article{liu2024timer,
+  title={Timer-XL: Long-Context Transformers for Unified Time Series Forecasting},
+  author={Liu, Yong and Qin, Guo and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+  journal={arXiv preprint arXiv:2410.04803},
+  year={2024}
+}
 ```
-
-## Acknowledgement
-
-We appreciate the following GitHub repos a lot for their valuable code and efforts.
-- Time-Series-Library (https://github.com/thuml/Time-Series-Library)
-- LOTSA (https://huggingface.co/datasets/Salesforce/lotsa_data) 
-- UCR Anomaly Archive (https://arxiv.org/abs/2009.13807)
-
 
 ## Contributors
 
 If you have any questions or want to use the code, feel free to contact:
 * Yong Liu (liuyong21@mails.tsinghua.edu.cn)
+* Guo Qin (qinguo24@mails.tsinghua.edu.cn)
 * Haoran Zhang (zhang-hr24@mails.tsinghua.edu.cn)
 * Chenyu Li (lichenyu20@mails.tsinghua.edu.cn)
-* Guo Qin (qinguo24@mails.tsinghua.edu.cn)
