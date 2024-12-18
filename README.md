@@ -28,9 +28,9 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 
 ## Zero-Shot Forecasting
-We provide the official checkpoint pre-trained on **260B** time points currently. See our [HuggingFace Repo](https://huggingface.co/thuml/timer-base-84m) for the detialed information and usage.
+We provide the checkpoint to make predictions without training samples. See our [HuggingFace Repo](https://huggingface.co/thuml/timer-base-84m) for the detialed information and usage.
 
-A inference example (**minimal dependencies required**): 
+> A inference example (**minimal dependencies required**): 
 
 ```
 import torch
@@ -57,7 +57,7 @@ print(output.shape)
 
 ## Datasets
 
-We propose Unified Time Series Datasets (UTSD), which encompass well-curated time series to facilitate the research on large time-series models. Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD).
+We collect Unified Time Series Datasets (UTSD), which encompass well-curated time series to facilitate the research on large time-series models. Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD).
 
 <p align="center">
 <img src="./figures/utsd.png" alt="" align=center />
@@ -65,7 +65,7 @@ We propose Unified Time Series Datasets (UTSD), which encompass well-curated tim
 
 ###  Usage
 
-You can access and load UTSD in the style of [TSLib](https://github.com/thuml/Time-Series-Library) based on the following:
+You can access and load UTSD in the style of [TSLib](https://github.com/thuml/Time-Series-Library) based on the following steps:
 
 ```bash
 # huggingface-cli login
@@ -79,10 +79,12 @@ python ./scripts/UTSD/utsdataset.py
 
 ## For Developers 
 
+For developers interest in large model adaptation, we provide fine-tuning code based on [non-HuggingFace checkpoints](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link), which is a smaller version of Timer developed in the [TSLib](https://github.com/thuml/Time-Series-Library) style.
+
 > [!NOTE]
->  We recommend using the [checkpoint on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code (but we are working on it :)
+>  We recommend using [checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code (but we are working on it :)
 > 
-> For developers interest in large model adaptation, we provide fine-tuning code based on [non-HuggingFace checkpoints](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link), which is a smaller version of Timer developed in the [TSLib](https://github.com/thuml/Time-Series-Library) style.
+> 
 
 ### Supported Tasks
 
@@ -92,7 +94,7 @@ python ./scripts/UTSD/utsdataset.py
 
 > **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We provide new benchmarks of predictive anomaly detection on [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807).
 
-We provide detailed README files illustrating each task under the folder ```./scripts/```.
+We provide the README files illustrating each task under the folder ```./scripts/```.
 
 
 
@@ -125,7 +127,7 @@ bash ./scripts/anomaly_detection/UCR.sh
 
 To fine-tune on your time series dataset, you can try out the following steps:
 
-1. The essense is to reload the customized dataloader and load the pre-trained checkpoint (See ```./scripts/``` folder).
+1. The key is to reload the customized dataloader and load the pre-trained checkpoint (See ```./scripts/``` folder).
 2. ```CIDatasetBenchmark```/```CIAutoRegressionDatasetBenchmark``` in the ```data_provider``` folder can train and evaluate models in direct / iterative multi-step mode.
 
 
@@ -133,7 +135,7 @@ To fine-tune on your time series dataset, you can try out the following steps:
 
 ### Pre-training and Adaptation
 
-To pre-train on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations with the unified context length. Further, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
+To pre-train on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations into the unified 1D context. Further, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
 
 <p align="center">
 <img src="./figures/pretrain_adaptation.png" align=center />
@@ -141,7 +143,7 @@ To pre-train on heterogeneous time series, we propose **single-series sequence (
 
 ### Model Architecture
 
-Given the limited exploration of **the backbone for large time-series models**, we evaluate candidate backbones and adopt the **decoder-only Transformer**, which also provides the **length-flexibility** to accommodate various time series.
+We evaluate various candidate backbones and eventually adopt the **decoder-only Transformer**, which provides notable **generalization performance** and **length-flexibility** that accommodate various time series.
 
 <p align="center">
 <img src="./figures/architecture.png" align=center />
