@@ -20,8 +20,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 ## Introduction
 
-**Tim**e Series Transfor**mer** (Timer) is a Generative Pre-trained Transformer for general time series analysis. Please visit our [Homepage](https://thuml.github.io/timer/) for a detailed introduction.
-
+**Tim**e Series Transfor**mer** (Timer) is a Generative Pre-trained Transformer for general time series analysis.
 <p align="center">
 <img src="./figures/abilities.png" alt="" align=center />
 </p>
@@ -155,7 +154,7 @@ Timer achieves **state-of-the-art** performance in [zero-shot forecasting](https
 
 ## Scalability
 
-By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing **84M paramaters** that is **pre-trained on 260B time points**, which supports a **maximum context length of 2880**.
+By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M paramaters that is pre-trained on 260B time points, which supports a **maximum context length of 2880**.
 
 <p align="center">
 <img src="./figures/scale.png" alt="300" align=center />
