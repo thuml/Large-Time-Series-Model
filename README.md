@@ -43,14 +43,9 @@ model = AutoModelForCausalLM.from_pretrained('thuml/timer-base-84m', trust_remot
 batch_size, lookback_length = 1, 2880
 seqs = torch.randn(batch_size, lookback_length)
 
-# normalize the input to mitigate different scale
-mean, std = seqs.mean(dim=-1, keepdim=True), seqs.std(dim=-1, keepdim=True) 
-normed_seqs = (seqs - mean) / std
-
 # generate forecast
 prediction_length = 96
 normed_output = model.generate(normed_seqs, max_new_tokens=prediction_length)
-output = std * normed_output + mean # rescale the output to the original scale
 
 print(output.shape)
 ```
