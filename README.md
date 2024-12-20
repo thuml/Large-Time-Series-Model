@@ -49,6 +49,8 @@ normed_output = model.generate(normed_seqs, max_new_tokens=prediction_length)
 print(output.shape)
 ```
 
+There's indeed room for improvement in this small model. We are actively working around it and are glad to see constructive suggestions and noteworthy cases :)
+
 ## Datasets
 
 We collect Unified Time Series Datasets (UTSD), which encompass well-curated time series to facilitate the research on large time-series models. Our dataset is released in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD).
