@@ -8,7 +8,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.12) Timer is enhanced with our [further work](https://arxiv.org/abs/2410.04803) and pre-trained on **260B time points**. Checkpoint is now available: [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Benchmark]](https://cdn-uploads.huggingface.co/production/uploads/64fbe24a2d20ced4e91de38a/VAfuvvqBALLvQUXYJPZJx.png). An example of zero-shot forecasting is provided [here](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) Timer is enhanced with [subsequent work (ICLR 2025)](https://arxiv.org/abs/2410.04803) and pre-trained on **260B time points**. Checkpoint is now available: [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Benchmark]](https://cdn-uploads.huggingface.co/production/uploads/64fbe24a2d20ced4e91de38a/VAfuvvqBALLvQUXYJPZJx.png). An example of zero-shot forecasting is provided [here](./examples/quickstart_zero_shot.ipynb).
 
 :triangular_flag_on_post: **News** (2024.10) We release numpy format of [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/). An easier and more efficient dataloader can be found [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
