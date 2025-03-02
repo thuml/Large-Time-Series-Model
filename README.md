@@ -75,23 +75,20 @@ python ./scripts/UTSD/utsdataset.py
 
 ## For Developers 
 
-For developers interest in large model adaptation, we provide fine-tuning code based on [non-HuggingFace checkpoints](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link), which is a smaller version of Timer developed in the [TSLib](https://github.com/thuml/Time-Series-Library) style.
+For developers interest in model fine-tuning, we provide fine-tuning code using the [non-HuggingFace checkpoints](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link), The checkpoint can be pre-trained and fine-tuned in a similiar way of [TSLib](https://github.com/thuml/Time-Series-Library).
 
 > [!NOTE]
 >  We recommend using [checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code (but we are working on it :)
-> 
-> 
 
 ### Supported Tasks
 
-> **[Forecasting](./scripts/forecast/README.md)**: We provide all scripts for few-shot forecasting in this repo.
+> **[Forecasting](./scripts/forecast/README.md)**: We provide scripts for full- or few-shot forecasting in this repo.
 
 > **[Imputation](./scripts/imputation/README.md)**:  We propose segment-level imputation, which is more challenging than point-level imputation.
 
-> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We provide new benchmarks of predictive anomaly detection on [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807).
+> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We propose predictive anomaly detection using [UCR Anomaly Datasets](https://arxiv.org/pdf/2009.13807). The task aims to predict normal future variations and prevent risks in advance.
 
 We provide the README files illustrating each task under the folder ```./scripts/```.
-
 
 
 ### Code for Fine-tuning 
@@ -104,7 +101,7 @@ pip install -r requirements.txt
 
 2. Put downstream datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Baidu Drive](https://pan.baidu.com/s/1KLwxB0Au-rxpmgY0yu2d3w?pwd=6k73) under the folder ```./dataset/```.
 
-3. Put the checkpoint from [Google Drive](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link) and [Baidu Drive](https://pan.baidu.com/s/1Wj_1_qMgyLNLOSUFZK3weg?pwd=r8i1) under the folder ```./checkpoints/```.
+3. Put the checkpoint from [Google Drive](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1Wj_1_qMgyLNLOSUFZK3weg?pwd=r8i1) under the folder ```./checkpoints/```.
 
 4. Train and evaluate the model. We provide the above tasks under the folder ```./scripts/```.
 
