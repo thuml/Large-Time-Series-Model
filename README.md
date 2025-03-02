@@ -8,11 +8,11 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.12) Timer is enhanced with [subsequent work (ICLR 2025)](https://arxiv.org/abs/2410.04803) and pre-trained on **260B time points**. Checkpoint is now available: [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Benchmark]](https://cdn-uploads.huggingface.co/production/uploads/64fbe24a2d20ced4e91de38a/VAfuvvqBALLvQUXYJPZJx.png). An example of zero-shot forecasting is provided [here](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png). Checkpoint is availabl on [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m). An example of zero-shot forecasting is provided [here](./examples/quickstart_zero_shot.ipynb).
 
-:triangular_flag_on_post: **News** (2024.10) We release numpy format of [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/). An easier and more efficient dataloader can be found [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
+:triangular_flag_on_post: **News** (2024.10) We release numpy format of [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/). An simple dataloader for large-scale pre-trained is provide [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
-:triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD). Dataloader is also contained.
+:triangular_flag_on_post: **News** (2024.6) Pre-training dataset (UTSD) is available in [HuggingFace](https://huggingface.co/datasets/thuml/UTSD).
 
 :triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
@@ -29,7 +29,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 ## Zero-Shot Forecasting
 We provide the checkpoint to make predictions without training samples. See our [HuggingFace Repo](https://huggingface.co/thuml/timer-base-84m) for the detialed information and usage.
 
-> A inference example (**minimal dependencies required**): 
+> Example
 
 ```
 import torch
@@ -49,7 +49,7 @@ normed_output = model.generate(normed_seqs, max_new_tokens=prediction_length)
 print(output.shape)
 ```
 
-There's indeed room for improvement in this small model. We are actively working around it and are glad to see constructive suggestions and noteworthy cases :)
+There's room for improvement in this small model. We are actively working around it and are glad to see constructive suggestions and noteworthy cases.
 
 ## Datasets
 
@@ -61,7 +61,7 @@ We collect Unified Time Series Datasets (UTSD), which encompass well-curated tim
 
 ###  Usage
 
-You can access and load UTSD in the style of [TSLib](https://github.com/thuml/Time-Series-Library) based on the following steps:
+You can access the data from HuggingFace and load the data in the style of [TSLib](https://github.com/thuml/Time-Series-Library):
 
 ```bash
 # huggingface-cli login
@@ -73,20 +73,22 @@ python ./scripts/UTSD/download_dataset.py
 python ./scripts/UTSD/utsdataset.py
 ```
 
+If you meet troubles when accessing the data, you can also download UTSD in numpy from [[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and use ```UTSD_Npy``` dataloader from [[OpenLTM]](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
+
 ## For Developers 
 
-For developers interest in model fine-tuning, we provide fine-tuning code using the [non-HuggingFace checkpoints](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link), The checkpoint can be pre-trained and fine-tuned in a similiar way of [TSLib](https://github.com/thuml/Time-Series-Library).
+For developers interest in fine-tune large model, we provide fine-tuning code for different example tasks. The checkpoint is pre-trained and fine-tuned using [TSLib](https://github.com/thuml/Time-Series-Library).
 
 > [!NOTE]
->  We recommend using [checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code (but we are working on it :)
-
+>  We recommend using [checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code.
+> 
 ### Supported Tasks
 
-> **[Forecasting](./scripts/forecast/README.md)**: We provide scripts for full- or few-shot forecasting in this repo.
+> **[Forecasting](./scripts/forecast/README.md)**: We provide scripts for full- or few-shot forecasting.
 
-> **[Imputation](./scripts/imputation/README.md)**:  We propose segment-level imputation, which is more challenging than point-level imputation.
+> **[Imputation](./scripts/imputation/README.md)**:  We adopt segment-level imputation, which is more challenging than point-level imputation.
 
-> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We propose predictive anomaly detection using [UCR Anomaly Datasets](https://arxiv.org/pdf/2009.13807). The task aims to predict normal future variations and prevent risks in advance.
+> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We build a benchmark using [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807). The task aims to predict normal future series and detect anomalies in advance.
 
 We provide the README files illustrating each task under the folder ```./scripts/```.
 
@@ -99,7 +101,7 @@ We provide the README files illustrating each task under the folder ```./scripts
 pip install -r requirements.txt
 ```
 
-2. Put downstream datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) and [Baidu Drive](https://pan.baidu.com/s/1KLwxB0Au-rxpmgY0yu2d3w?pwd=6k73) under the folder ```./dataset/```.
+2. Put downstream datasets from [Google Drive](https://drive.google.com/file/d/1yffcQBcMLasQcT7cdotjOVcg-2UKRarw/view?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1KLwxB0Au-rxpmgY0yu2d3w?pwd=6k73) under the folder ```./dataset/```.
 
 3. Put the checkpoint from [Google Drive](https://drive.google.com/drive/folders/15oaiAl4OO5gFqZMJD2lOtX2fxHbpgcU8?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1Wj_1_qMgyLNLOSUFZK3weg?pwd=r8i1) under the folder ```./checkpoints/```.
 
@@ -126,7 +128,7 @@ To fine-tune on your time series dataset, you can try out the following steps:
 
 ## Approach
 
-### Pre-training and Adaptation
+### Unified Pre-training
 
 To pre-train on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations into the unified 1D context. Further, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
 
@@ -136,7 +138,7 @@ To pre-train on heterogeneous time series, we propose **single-series sequence (
 
 ### Model Architecture
 
-We evaluate various candidate backbones and eventually adopt the **decoder-only Transformer**, which provides notable **generalization performance** and **length-flexibility** that accommodate various time series.
+We evaluate various candidate backbones and eventually adopt the **decoder-only Transformer**, which provides notable **generalization performance** and **flexibility** that accommodate varying-length time series.
 
 <p align="center">
 <img src="./figures/architecture.png" align=center />
@@ -145,7 +147,7 @@ We evaluate various candidate backbones and eventually adopt the **decoder-only 
 
 ## Performance
 
-Timer achieves **state-of-the-art** performance in [zero-shot forecasting](https://cdn-uploads.huggingface.co/production/uploads/64fbe24a2d20ced4e91de38a/VAfuvvqBALLvQUXYJPZJx.png), general time series analysis, and present the pre-training benefit on few-shot scenarios.
+Timer achieves **state-of-the-art** performance in [zero-shot forecasting](./figures/zeroshot_result.png) and few-shot adaptation.
 
 <p align="center">
 <img src="./figures/performance.png" align=center />
@@ -153,15 +155,15 @@ Timer achieves **state-of-the-art** performance in [zero-shot forecasting](https
 
 ## Scalability
 
-By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M paramaters that is pre-trained on 260B time points, which supports a **maximum context length of 2880**.
+By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M paramaters that is pre-trained on 260B time points, which supports a maximum context length of 2880.
 
 <p align="center">
 <img src="./figures/scale.png" alt="300" align=center />
 </p>
 
-## Futher Improvement
+## Subsequent Work
 
-We enhanced Timer by this [paper](https://arxiv.org/abs/2410.04803) with **longer context** and **TimeAttention**.
+We proposed Timer-XL for unified forecasting in this [[Paper]](https://arxiv.org/abs/2410.04803).  It can be used for **task-specific training** or **scalable pre-training**, handling **arbitrary-length** and **any-variable** time series [[Repo]](https://github.com/thuml/Timer-XL).  
 
 <p align="center">
 <img src="./figures/timer-xl.png" alt="300" align=center />
