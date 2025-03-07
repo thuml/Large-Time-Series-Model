@@ -8,7 +8,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 # Updates
 
-:triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png). Checkpoint is availabl on [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m). An example of zero-shot forecasting is provided [here](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png). Checkpoint is available [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m). An quickstart for zero-shot forecasting is [here](./examples/quickstart_zero_shot.ipynb).
 
 :triangular_flag_on_post: **News** (2024.10) We release numpy format of [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/). An simple dataloader for large-scale pre-trained is provide [here](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
