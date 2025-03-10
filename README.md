@@ -80,8 +80,10 @@ If you meet troubles when accessing the data, you can also download UTSD in nump
 For developers interest in fine-tune large model, we provide fine-tuning code for different example tasks. The checkpoint is pre-trained and fine-tuned using [TSLib](https://github.com/thuml/Time-Series-Library).
 
 > [!NOTE]
->  We recommend using [checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for model evaluation (e.g., zero-shot forecasting). However, it is not compatiable with the following fine-tuning code.
-> 
+>  We recommend using [this checkpoints on HuggingFace](https://huggingface.co/thuml/timer-base-84m) for **evaluation and deployment** (e.g., zero-shot forecasting). However, this huggingface checkpoint is not compatiable with the following fine-tuning code.
+>
+
+
 ### Supported Tasks
 
 > **[Forecasting](./scripts/forecast/README.md)**: We provide scripts for full- or few-shot forecasting.
@@ -125,6 +127,10 @@ To fine-tune on your time series dataset, you can try out the following steps:
 1. The key is to reload the customized dataloader and load the pre-trained checkpoint (See ```./scripts/``` folder).
 2. ```CIDatasetBenchmark```/```CIAutoRegressionDatasetBenchmark``` in the ```data_provider``` folder can train and evaluate models in direct / iterative multi-step mode.
 
+
+> [!NOTE]
+> For developers interested in developing and improving your own large time-series models, we recomment this repo [OpenLTM](https://github.com/thuml/OpenLTM).
+> 
 
 ## Approach
 
