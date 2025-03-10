@@ -26,7 +26,6 @@ python -u run.py \
   --features M \
   --seq_len 192 \
   --label_len 0 \
-  --pred_len 192 \    # not used in imputation
   --patch_len $patch_len \
   --e_layers $e_layers \
   --factor 3 \
