@@ -1,5 +1,5 @@
 > [!NOTE]
-> We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM) to explore the design philosophy of large time-series models, which contains a simple pipeline to train large time-series models :)
+> We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM) to explore the design philosophy of large time-series models, which contains a simple pipeline to pre-train your large time-series models :)
 
 
 # Timer (Large Time-Series Model)
