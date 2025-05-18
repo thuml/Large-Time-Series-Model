@@ -6,7 +6,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 :triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), the third-generation time series foundation model has been accept as **ICML 2025 Spotlight** (Top 2.6%). 
 
-:triangular_flag_on_post: **News** (2025.2) We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train your own large time-series models :)
+:triangular_flag_on_post: **News** (2025.2) We release a open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train customized large time-series models :)
 
 :triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png) [[Checkpoint]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
 
