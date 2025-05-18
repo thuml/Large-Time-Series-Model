@@ -4,7 +4,7 @@ This repo provides official code, datasets and checkpoints for [Timer: Generativ
 
 # Updates
 
-:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a familiy of generative time series foundation model has been accept as **ICML 2025 Spotlight** (Top 2.6%). 
+:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), the third-generation time series foundation model has been accept as **ICML 2025 Spotlight** (Top 2.6%). 
 
 :triangular_flag_on_post: **News** (2025.2) We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train your own large time-series models :)
 
