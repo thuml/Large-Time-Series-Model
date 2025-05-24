@@ -52,7 +52,7 @@ print(output.shape)
 
 For developers interested in fine-tuning large time-series models or pre-training on customized datasets, please refer to [OpenLTM](https://github.com/thuml/OpenLTM), which includes the implementations and checkpoint of large time-series models.
 
-For developers interested in applying large time-series models on other time series analysis tasks, we provide example scripts [here](./scripts/README.md).
+For developers interested in applying large time-series models on other time series analysis tasks (e.g., imputation and anomaly detection), we provide example scripts [here](./scripts/README.md).
 
 ## Datasets
 
