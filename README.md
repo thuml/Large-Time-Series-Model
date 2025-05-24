@@ -1,12 +1,12 @@
 # Timer (Large Time-Series Model)
 
-This repo provides official code, datasets and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
+This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
 
 # Updates
 
-:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a familiy of generative time series foundation model has been accept as **ICML 2025 Spotlight** (Top 2.6%). 
+:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Spotlight** (Top 2.6%). Get your first zero-shot predictions in one second! [[GitHub]](https://github.com/thuml/Sundial), [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m). 
 
-:triangular_flag_on_post: **News** (2025.2) We release a open codebase [**OpenLTM**](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train your own large time-series models :)
+:triangular_flag_on_post: **News** (2025.2) We release an open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train customized large time-series models :)
 
 :triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png) [[Checkpoint]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
 
@@ -108,7 +108,7 @@ Timer achieves **state-of-the-art** performance in [zero-shot forecasting](./fig
 
 ## Scalability
 
-By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M paramaters that is pre-trained on 260B time points, which supports a maximum context length of 2880.
+By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M parameters that is pre-trained on 260B time points, which supports a maximum context length of 2880.
 
 <p align="center">
 <img src="./figures/scale.png" alt="300" align=center />
@@ -124,7 +124,7 @@ By scaling, Timer achieves notable performance improvement. Currently, we provid
 </p>
 
 ### ICML 2025 
-We proposed [Sundial](https://arxiv.org/abs/2502.00816), a familiy of **generative** time series foundation models, which is pre-trained on **a trillion** (10^12) time points. The model can be applied for **point** and **probabilistic** forecasting, making **zero-shot** predictions.  
+We proposed [Sundial](https://arxiv.org/abs/2502.00816), a family of **generative** time series foundation models, which is pre-trained on **a trillion** (10^12) time points. The model can be applied for **point** and **probabilistic** forecasting, making **zero-shot** predictions.  
 
 <p align="center">
 <img src="./figures/sundial.png" alt="300" align=center />
