@@ -1,20 +1,20 @@
-# Timer (Large Time-Series Model)
+# Timer (**Tim**e-Series Transform**er**)
 
-This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/), [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
+This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
 
 # Updates
 
-:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Spotlight** (Top 2.6%). Get your first zero-shot predictions in one second! [[GitHub]](https://github.com/thuml/Sundial), [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m). 
+:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Spotlight** (Top 2.6%). Get your zero-shot probabilistic predictions within milliseconds! [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
 
-:triangular_flag_on_post: **News** (2025.2) We release an open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains a simple pipeline to pre-train customized large time-series models :)
+:triangular_flag_on_post: **News** (2025.2) We release an open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains the whole pipeline to pre-train customized large time-series models.
 
-:triangular_flag_on_post: **News** (2024.12) Timer-XL for unified forecasting is accepted as  [ICLR 2025](https://arxiv.org/abs/2410.04803). We released a pre-trained model on **260B time points** [[Performance]](./figures/zeroshot_result.png) [[Checkpoint]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) [Timer-XL](https://arxiv.org/abs/2410.04803) for unified forecasting is accepted as ICLR 2025. We released a pre-trained model for zero-shot forecasting [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](https://github.com/thuml/Sundial/blob/main/examples/quickstart_zero_shot.ipynb).
 
 :triangular_flag_on_post: **News** (2024.10) We release the pre-training dataset UTSD on [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) or you can use the numpy format [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and this [dataloader](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
 :triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
-:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning.
+:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning on different tasks.
 
 ## Introduction
 
@@ -24,11 +24,11 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 </p>
 
 
-## Zero-Shot Forecasting
+## Quickstart
 
-We provide the checkpoint to make predictions without training samples. See our [HuggingFace Repo](https://huggingface.co/thuml/timer-base-84m) for more information.
+We provide the out-of-the-box models to make predictions without training. See our [HuggingFace](https://huggingface.co/collections/thuml/time-series-foundation-models-67c80ace73299239b651d954) for more information.
 
-> Example
+> Example of Timer (Zero-Shot Forecasting)
 
 ```
 import torch
@@ -48,11 +48,35 @@ normed_output = model.generate(normed_seqs, max_new_tokens=prediction_length)
 print(output.shape)
 ```
 
+> Example of Sundial (Multi-Prediction Generation)
+
+```
+import torch
+from transformers import AutoModelForCausalLM
+
+# load pretrain model
+# supports different lookback/forecast lengths
+model = AutoModelForCausalLM.from_pretrained('thuml/sundial-base-128m', trust_remote_code=True) 
+
+# prepare input
+batch_size, lookback_length = 1, 2880 
+seqs = torch.randn(batch_size, lookback_length)
+
+# Note that Sundial can generate multiple probable predictions
+forecast_length = 96 
+num_samples = 20
+
+output = model.generate(seqs, max_new_tokens=forecast_length, num_samples=num_samples)
+
+# use raw predictions for mean/quantiles/confidence-interval estimation
+print(output.shape)
+```
+
 ## Model Adaption
 
-For developers interested in fine-tuning large time-series models or pre-training on customized datasets, please refer to [OpenLTM](https://github.com/thuml/OpenLTM), which includes the implementations and checkpoint of large time-series models.
+* For developers interested in **fine-tuning large time-series models or pre-training on customized datasets**, please use [OpenLTM](https://github.com/thuml/OpenLTM), including code scripts and checkpoint of various models.
 
-For developers interested in applying large time-series models on other time series analysis tasks (e.g., imputation and anomaly detection), we provide example scripts [here](./scripts/README.md).
+* For developers interested in **applying large time-series models on other time series analysis tasks** (e.g., imputation and anomaly detection), this repo contains scripts and checkpoints [[README]](./scripts/README.md).
 
 ## Datasets
 
@@ -76,55 +100,27 @@ python ./scripts/UTSD/download_dataset.py
 python ./scripts/UTSD/utsdataset.py
 ```
 
-If you meet troubles when accessing the data, you can also download UTSD in numpy from [[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and use ```UTSD_Npy``` dataloader from [[OpenLTM]](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
+If you meet troubles when accessing the data, you can also download UTSD in numpy from [[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and use ```UTSD_Npy``` dataloader [[here]](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
 
 ## Introduction
 
-### Unified Pre-training
-
-To pre-train on heterogeneous time series, we propose **single-series sequence (S3)**, reserving series variations into the unified 1D context. Further, we convert forecasting, imputation, and anomaly detection into a **unified generative task**.
-
-<p align="center">
-<img src="./figures/pretrain_adaptation.png" align=center />
-</p>
-
-### Model Architecture
-
-We evaluate various candidate backbones and eventually adopt the **decoder-only Transformer**, which provides notable **generalization performance** and **flexibility** that accommodate varying-length time series.
+### ICML 2024
+We propose [Timer](https://arxiv.org/abs/2402.02368), a decoder-only  **pre-trained** time series Transformer. We propose **single-series sequence (S3) format**, converting diverse series into unified 1D sequences. The predictive model can also be adapted for forecasting, imputation, and anomaly detection [[Adaptation]](./scripts/README.md).  
 
 <p align="center">
-<img src="./figures/architecture.png" align=center />
+<img src="./figures/timer.png" align=center />
 </p>
-
-
-## Performance
-
-Timer achieves **state-of-the-art** performance in [zero-shot forecasting](./figures/zeroshot_result.png) and few-shot adaptation.
-
-<p align="center">
-<img src="./figures/performance.png" align=center />
-</p>
-
-## Scalability
-
-By scaling, Timer achieves notable performance improvement. Currently, we provide the base version containing 84M parameters that is pre-trained on 260B time points, which supports a maximum context length of 2880.
-
-<p align="center">
-<img src="./figures/scale.png" alt="300" align=center />
-</p>
-
-## Subsequent Works
 
 ### ICLR 2025
- We proposed [Timer-XL](https://arxiv.org/abs/2410.04803) for unified time series forecasting.  It can be used for **task-specific training** or **scalable pre-training**, handling **arbitrary-length** and **any-variable** time series [[Repo]](https://github.com/thuml/Timer-XL).  
+ We proposed [Timer-XL](https://arxiv.org/abs/2410.04803) for unified time series forecasting.  It can be used for **supervised training** or **large-scale pre-training**, explicitly modeling **multi-dimensional** time series [[GitHub]](https://github.com/thuml/Timer-XL).  
 
 <p align="center">
 <img src="./figures/timer-xl.png" alt="300" align=center />
 </p>
 
-### ICML 2025 
-We proposed [Sundial](https://arxiv.org/abs/2502.00816), a family of **generative** time series foundation models, which is pre-trained on **a trillion** (10^12) time points. The model can be applied for **point** and **probabilistic** forecasting, making **zero-shot** predictions.  
+### ICML 2025 Spotlight
+We proposed [Sundial](https://arxiv.org/abs/2502.00816), a family of **generative** time series foundation models, which is pre-trained on **a trillion** (10^12) time points. The model can be applied for both **point** and **probabilistic** forecasting, making **zero-shot** forecasting within milliseconds [[GitHub]](https://github.com/thuml/Sundial).
 
 <p align="center">
 <img src="./figures/sundial.png" alt="300" align=center />
@@ -147,7 +143,23 @@ If you find this repo helpful, please cite our paper.
   journal={arXiv preprint arXiv:2410.04803},
   year={2024}
 }
+
+@article{liu2025sundial,
+  title={Sundial: A Family of Highly Capable Time Series Foundation Models},
+  author={Liu, Yong and Qin, Guo and Shi, Zhiyuan and Chen, Zhi and Yang, Caiyin and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+  journal={arXiv preprint arXiv:2502.00816},
+  year={2025}
+}
 ```
+
+## Acknowledgment
+We appreciate the following GitHub repos a lot for their valuable code and datasets:
+
+* Time-Series-Library (https://github.com/thuml/Time-Series-Library)
+* AutoTimes (https://github.com/thuml/AutoTimes)
+* LoTSA Data (https://huggingface.co/datasets/Salesforce/lotsa_data)
+* UCR Anomaly Archive (https://arxiv.org/pdf/2009.13807)
+
 
 ## Contributors
 

@@ -1,15 +1,15 @@
-## Other Tasks
+## Fine-Tuning Timer
 
-We provide example scripts for few-shot forecasting, imputation and anomaly detection. The checkpoint is pre-trained and fine-tuned using [TSLib](https://github.com/thuml/Time-Series-Library).
+We provide example scripts for few-shot forecasting, imputation and anomaly detection with [Timer](https://arxiv.org/abs/2402.02368). The checkpoint is pre-trained and fine-tuned using [TSLib](https://github.com/thuml/Time-Series-Library).
 
 
 ### Supported Tasks
 
-> **[Forecasting](./scripts/forecast/README.md)**: We provide scripts for few-shot forecasting.
+> **[Forecasting](./forecast/README.md)**: We provide scripts for few-shot forecasting.
 
-> **[Imputation](./scripts/imputation/README.md)**:  We adopt segment-level imputation, which is more challenging than point-level imputation.
+> **[Imputation](./imputation/README.md)**:  We adopt segment-level imputation, which is more challenging than point-level imputation.
 
-> **[Anomaly Detection](scripts/anomaly_detection/README.md)**: We build a benchmark using [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807). The task aims to predict normal future series and detect anomalies in advance.
+> **[Anomaly Detection](./anomaly_detection/README.md)**: We build a benchmark using [UCR Anomaly Archive](https://arxiv.org/pdf/2009.13807). The task aims to predict normal future series and detect anomalies in advance.
 
 We provide the README files illustrating each task under the folder ```./scripts/```.
 
@@ -38,3 +38,5 @@ bash ./scripts/imputation/ECL.sh
 # anomaly detection
 bash ./scripts/anomaly_detection/UCR.sh
 ```
+
+5. We provide detailed task descriptions on corresponding README files: [[Forecasting]](./forecast/README.md) [[Imputation]](./imputation/README.md) [[Anomaly Detection]](./anomaly_detection/README.md)

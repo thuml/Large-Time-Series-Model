@@ -1,6 +1,6 @@
 # Anomaly Detection
 
-Anomaly detection is vital in industry and operations. Previous methods ([Xu et al., 2021](https://arxiv.org/abs/2110.02642); [Wu et al., 2022](https://openreview.net/forum?id=ju_Uqw384Oq)) typically tackle the unsupervised scenario in a reconstructedtive approach, where a model is trained to reconstruct the input series, and the output is regarded as the normal series. Based on our generative model, we cope with anomaly detection in a predictive approach, which utilizes the observed segments to predict the future segment, and the predicted segment will be established as the standard to be compared with the actual value received. Unlike the previous method requiring to collect time series of a period for reconstruction, our predictive approach allows for segment-level anomaly detection on the fly. Thus, the task is converted into a next token prediction task.
+Anomaly detection is vital in industry and operations. Previous methods ([Xu et al., 2021](https://arxiv.org/abs/2110.02642); [Wu et al., 2022](https://openreview.net/forum?id=ju_Uqw384Oq)) typically tackle the unsupervised scenario in a reconstructedtive approach, where a model is trained to reconstruct the input series, and the output is regarded as the normal series. Based on our predictive model, we cope with anomaly detection in a predictive approach, which utilizes the observed segments to predict the future segment, and the predicted segment will be established as the standard to be compared with the actual value received. Unlike the previous method requiring to collect time series of a period for reconstruction, our predictive approach allows for segment-level anomaly detection on the fly. Thus, the task is converted into a next token prediction task.
 
 
 ## Dataset
@@ -18,7 +18,7 @@ We introduce UCR Anomaly Archive ([Wu & Keogh, 2021](https://arxiv.org/pdf/2009.
 
 ## Scripts
 
-The script is now compatible with predictive models. If you're interested in developing the predictive anomaly detection benchmark, we are also looking forward to any pull requests. 
+The script is compatible with forecasting models. If you're interested in developing the predictive anomaly detection benchmark, we are also looking forward to any pull requests. 
 
 ```bash
 model_name=Timer
