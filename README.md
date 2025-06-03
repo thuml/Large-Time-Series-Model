@@ -14,7 +14,7 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 
 :triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
-:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning on different tasks.
+:triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning on different tasks [[README]](./scripts/README.md).
 
 ## Introduction
 
@@ -26,7 +26,7 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 
 ## Quickstart
 
-We provide the out-of-the-box models to make predictions without training. See our [HuggingFace](https://huggingface.co/collections/thuml/time-series-foundation-models-67c80ace73299239b651d954) for more information.
+We provide out-of-the-box models to make predictions without training. See our [HuggingFace](https://huggingface.co/collections/thuml/time-series-foundation-models-67c80ace73299239b651d954) for more information.
 
 > Example of Timer (Zero-Shot Forecasting)
 
@@ -106,7 +106,7 @@ If you meet troubles when accessing the data, you can also download UTSD in nump
 ## Introduction
 
 ### ICML 2024
-We propose [Timer](https://arxiv.org/abs/2402.02368), a decoder-only  **pre-trained** time series Transformer. We propose **single-series sequence (S3) format**, converting diverse series into unified 1D sequences. The predictive model can also be adapted for forecasting, imputation, and anomaly detection [[Adaptation]](./scripts/README.md).  
+We propose [Timer](https://arxiv.org/abs/2402.02368), a decoder-only  **pre-trained** time series Transformer. We propose **single-series sequence (S3) format**, converting diverse series into unified 1D sequences. The predictive model can also be adapted for forecasting, imputation, and anomaly detection [[README]](./scripts/README.md).  
 
 <p align="center">
 <img src="./figures/timer.png" align=center />
@@ -165,6 +165,6 @@ We appreciate the following GitHub repos a lot for their valuable code and datas
 
 If you have any questions or want to use the code, feel free to contact:
 * Yong Liu (liuyong21@mails.tsinghua.edu.cn)
-* Guo Qin (qinguo24@mails.tsinghua.edu.cn)
 * Haoran Zhang (zhang-hr24@mails.tsinghua.edu.cn)
 * Chenyu Li (lichenyu20@mails.tsinghua.edu.cn)
+* Guo Qin (qinguo24@mails.tsinghua.edu.cn)
