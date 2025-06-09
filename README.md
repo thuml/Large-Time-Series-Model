@@ -119,7 +119,7 @@ We propose [Timer](https://arxiv.org/abs/2402.02368), a decoder-only  **pre-trai
 <img src="./figures/timer-xl.png" alt="300" align=center />
 </p>
 
-### ICML 2025 Spotlight
+### ICML 2025 Oral
 We proposed [Sundial](https://arxiv.org/abs/2502.00816), a family of **generative** time series foundation models, which is pre-trained on **a trillion** (10^12) time points. The model can be applied for both **point** and **probabilistic** forecasting, making **zero-shot** forecasting within milliseconds [[GitHub]](https://github.com/thuml/Sundial).
 
 <p align="center">
