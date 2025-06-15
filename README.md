@@ -48,7 +48,7 @@ normed_output = model.generate(normed_seqs, max_new_tokens=prediction_length)
 print(output.shape)
 ```
 
-> Example of Sundial (Multi-Prediction Generation)
+> Example of Sundial (Generative Forecasting)
 
 ```
 import torch
