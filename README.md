@@ -24,9 +24,9 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 </p>
 
 
-## Quickstart
+## Quick Start
 
-We provide out-of-the-box models to make predictions without training. See our [HuggingFace](https://huggingface.co/collections/thuml/time-series-foundation-models-67c80ace73299239b651d954) for more information.
+We provide out-of-the-box models for zero-shot forecasting (no training and no GPU needed).
 
 > Example of Timer (Zero-Shot Forecasting)
 
@@ -72,6 +72,8 @@ output = model.generate(seqs, max_new_tokens=forecast_length, num_samples=num_sa
 print(output.shape)
 ```
 
+More usage examples are provided [here](./examples/). See our [HuggingFace](https://huggingface.co/collections/thuml/time-series-foundation-models-67c80ace73299239b651d954) for more information.
+
 ## Model Adaption
 
 * For developers interested in **fine-tuning large time-series models or pre-training on customized datasets**, please use [OpenLTM](https://github.com/thuml/OpenLTM), including code scripts and checkpoint of various models.
@@ -98,6 +100,12 @@ python ./scripts/UTSD/download_dataset.py
 
 # dataloader
 python ./scripts/UTSD/utsdataset.py
+```
+
+In addition, we provide code dataset_evaluation.py for evaluating time series datasets, which you can use to evaluate your Huggingface formatted dataset. The usage of this script is as follows:
+
+```
+python ./scripts/UTSD/dataset_evaluation.py --root_path <dataset root path> --log_path <output log path>
 ```
 
 If you meet troubles when accessing the data, you can also download UTSD in numpy from [[Tsinghua Cloud]](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and use ```UTSD_Npy``` dataloader [[here]](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
