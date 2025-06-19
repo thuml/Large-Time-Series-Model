@@ -7,6 +7,18 @@ from tqdm import tqdm
 
 """
 All single-variate series in UTSD are divided into (input-output) windows with a uniform length based on S3.
+
+Proposed by: Timer: Generative Pre-trained Transformers Are Large Time Series Models (ICML 2024)
+
+Paper: https://arxiv.org/abs/2402.02368
+
+GitHub: https://github.com/thuml/Large-Time-Series-Model
+
+Citation: @inproceedings{liutimer,
+    title={Timer: Generative Pre-trained Transformers Are Large Time Series Models},
+    author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+    booktitle={Forty-first International Conference on Machine Learning}
+}
 """
 class UTSDataset(Dataset):
     def __init__(self, subset_name=r'UTSD-1G', flag='train', split=0.9,

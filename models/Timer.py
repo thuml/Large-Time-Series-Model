@@ -5,6 +5,19 @@ from models import TimerBackbone
 
 
 class Model(nn.Module):
+    """
+    Timer: Generative Pre-trained Transformers Are Large Time Series Models (ICML 2024)
+
+    Paper: https://arxiv.org/abs/2402.02368
+    
+    GitHub: https://github.com/thuml/Large-Time-Series-Model
+    
+    Citation: @inproceedings{liutimer,
+        title={Timer: Generative Pre-trained Transformers Are Large Time Series Models},
+        author={Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+        booktitle={Forty-first International Conference on Machine Learning}
+    }
+    """
     def __init__(self, configs):
         super().__init__()
         self.task_name = configs.task_name
