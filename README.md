@@ -1,6 +1,6 @@
-# Timer (**Tim**e-Series Transform**er**)
+# Large Time Series Model
 
-This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/).
+This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/) and our subsequent works.
 
 # Updates
 
@@ -8,11 +8,11 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 
 :triangular_flag_on_post: **News** (2025.2) We release an open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains the whole pipeline to pre-train customized large time-series models.
 
-:triangular_flag_on_post: **News** (2024.12) [Timer-XL](https://arxiv.org/abs/2410.04803) for unified forecasting is accepted as ICLR 2025. We released a pre-trained model for zero-shot forecasting [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) [Timer-XL](https://arxiv.org/abs/2410.04803) for unified forecasting is accepted as **ICLR 2025**. We released a pre-trained model for zero-shot forecasting [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
 
 :triangular_flag_on_post: **News** (2024.10) We release the pre-training dataset UTSD on [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) or you can use the numpy format [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and this [dataloader](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
-:triangular_flag_on_post: **News** (2024.5) Accepted by ICML 2024, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
+:triangular_flag_on_post: **News** (2024.5) Accepted by **ICML 2024**, a [camera-ready version](https://arxiv.org/abs/2402.02368) of **31 pages**.
 
 :triangular_flag_on_post: **News** (2024.2) Releasing model checkpoints and code for fine-tuning on different tasks [[README]](./scripts/README.md).
 
