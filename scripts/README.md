@@ -1,4 +1,4 @@
-## Fine-Tuning Timer
+## Fine-Tuning Tasks
 
 We provide example scripts for few-shot forecasting, imputation and anomaly detection with [Timer](https://arxiv.org/abs/2402.02368). The checkpoint is pre-trained and fine-tuned using [TSLib](https://github.com/thuml/Time-Series-Library).
 
