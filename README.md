@@ -1,6 +1,6 @@
 # Large Time Series Model
 
-This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/) and our subsequent works.
+This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/) and our subsequent works [[Tutorial (CN)]](https://cloud.tsinghua.edu.cn/f/7b88e05d38bb40a1be30/), [[Tutorial (EN)]](https://cloud.tsinghua.edu.cn/f/c5fca76d6fa54f1d891a/).
 
 # Updates
 
