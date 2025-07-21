@@ -102,7 +102,7 @@ python ./scripts/UTSD/download_dataset.py
 python ./scripts/UTSD/utsdataset.py
 ```
 
-In addition, we provide code dataset_evaluation.py for evaluating time series datasets, which you can use to evaluate your Huggingface formatted dataset. The usage of this script is as follows:
+We provide code for evaluating time series datasets, which you can use to evaluate your Huggingface formatted dataset:
 
 ```
 python ./scripts/UTSD/dataset_evaluation.py --root_path <dataset root path> --log_path <output log path>
