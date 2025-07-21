@@ -4,11 +4,11 @@ This repo provides official code, datasets, and checkpoints for [Timer: Generati
 
 # Updates
 
-:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Oral** (Top 1%). Get your zero-shot probabilistic predictions within milliseconds! [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m) [[Quickstart]](./examples/quickstart_zero_shot_generation.ipynb) [[Checkpoint]](https://github.com/thuml/OpenLTM/blob/main/load_pth_ckpt.ipynb).
+:triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Oral** (Top 1%). Get your zero-shot probabilistic predictions within milliseconds! [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m) [[Quickstart]](./examples/quickstart_zero_shot_generation.ipynb).
 
 :triangular_flag_on_post: **News** (2025.2) We release an open codebase [OpenLTM](https://github.com/thuml/OpenLTM), which contains the whole pipeline to pre-train and fine-tune large time-series models.
 
-:triangular_flag_on_post: **News** (2024.12) [Timer-XL](https://arxiv.org/abs/2410.04803) for unified forecasting is accepted as **ICLR 2025**. We released a pre-trained model for zero-shot forecasting [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb).
+:triangular_flag_on_post: **News** (2024.12) [Timer-XL](https://arxiv.org/abs/2410.04803) for unified forecasting is accepted as **ICLR 2025**. We released a pre-trained model for zero-shot forecasting [[HuggingFace]](https://huggingface.co/thuml/timer-base-84m) [[Quickstart]](./examples/quickstart_zero_shot.ipynb) [[Checkpoint]](https://github.com/thuml/OpenLTM/blob/main/load_pth_ckpt.ipynb).
 
 :triangular_flag_on_post: **News** (2024.10) We release the pre-training dataset UTSD on [HuggingFace](https://huggingface.co/datasets/thuml/UTSD) or you can use the numpy format [UTSD](https://cloud.tsinghua.edu.cn/f/93868e3a9fb144fe9719/) and this [dataloader](https://github.com/thuml/OpenLTM/blob/main/data_provider/data_loader.py).
 
