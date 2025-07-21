@@ -76,7 +76,6 @@ if __name__ == '__main__':
     parser.add_argument('--stride', type=int, default=1, help='stride')
     parser.add_argument('--ckpt_path', type=str, default='', help='ckpt file')
     parser.add_argument('--finetune_epochs', type=int, default=10, help='train epochs')
-    parser.add_argument('--finetune_rate', type=float, default=0.1, help='finetune ratio')
     parser.add_argument('--local_rank', type=int, default=0, help='local_rank')
 
     parser.add_argument('--patch_len', type=int, default=24, help='input sequence length')
