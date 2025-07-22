@@ -144,7 +144,7 @@ class Exp_Forecast(Exp_Basic):
                     # only use the forecast window to calculate loss
                     loss = criterion(outputs[:, -self.args.pred_len:, :], batch_y[:, -self.args.pred_len:, :])
 
-                loss_val += loss
+                loss_val += loss.item()
                 count += 1
 
                 if i % 50 == 0:
