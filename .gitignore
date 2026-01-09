@@ -165,3 +165,8 @@ data_loader_all.py
 /debug/
 /inference_results/
 /packages/
+/csv_data/
+/csv_data/original_data/
+/swanlog/
+/Halosee/inference/result/
+/Halosee/inference/swanlog/
