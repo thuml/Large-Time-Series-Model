@@ -2,7 +2,7 @@
 
 This repo provides official code, datasets, and checkpoints for [Timer: Generative Pre-trained Transformers Are Large Time Series Models](https://arxiv.org/abs/2402.02368). [[Poster]](https://cloud.tsinghua.edu.cn/f/91da8a3d06984f209461/) [[Slides]](https://cloud.tsinghua.edu.cn/f/b766629dbc584a4e8563/) and our subsequent works [[Tutorial (CN)]](https://cloud.tsinghua.edu.cn/f/7b88e05d38bb40a1be30/), [[Tutorial (EN)]](https://cloud.tsinghua.edu.cn/f/c5fca76d6fa54f1d891a/).
 
-# Updates
+# Updates 
 
 :triangular_flag_on_post: **News** (2025.5) [Sundial](https://arxiv.org/abs/2502.00816), a family of generative time series foundation models has been accepted as **ICML 2025 Oral** (Top 1%). Get your zero-shot probabilistic predictions within milliseconds! [[HuggingFace]](https://huggingface.co/thuml/sundial-base-128m) [[Quickstart]](./examples/quickstart_zero_shot_generation.ipynb).
 
